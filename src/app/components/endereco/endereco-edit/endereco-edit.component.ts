@@ -47,7 +47,6 @@ export class EnderecoEditComponent implements OnInit {
   }
 
   saida(){
-    this.transitorio.enderecos.bairro = "Cachorro sentado!";
     this.dialogRef.close();
   }
 
