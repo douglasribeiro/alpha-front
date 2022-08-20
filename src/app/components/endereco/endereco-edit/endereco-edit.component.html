@@ -1,0 +1,48 @@
+<div>
+    <form class="form">
+
+        <mat-form-field class="midWidth" appearance="legacy">
+            <mat-label>Tipo Endereço</mat-label>
+            <mat-select [(ngModel)]="endereco.tipoEndereco" name="tipoEndereco">
+                <mat-option *ngFor="let te of tipoEnderecos" [value]="te.value">
+                    {{te.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Logradouro</mat-label>
+            <input [(ngModel)]="endereco.logradouro" name="nome" [formControl]="logradouro" required matInput
+                placeholder="Ex. Logradouro">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Numero</mat-label>
+            <input [(ngModel)]="endereco.numero" name="nome" [formControl]="numero" required matInput
+                placeholder="Ex. Numero">
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Complemento</mat-label>
+            <input [(ngModel)]="endereco.complemento" name="nome" [formControl]="complemento" required matInput
+                placeholder="Ex. Complemento">
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Bairro</mat-label>
+            <input [(ngModel)]="endereco.bairro" name="nome" [formControl]="bairro" required matInput
+                placeholder="Ex. Bairro">
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Cidade</mat-label>
+            <input [(ngModel)]="endereco.cidade.nome" name="nome" [formControl]="cidade" required matInput
+                placeholder="Ex. Cidade">
+        </mat-form-field>
+
+        <button mat-button class="close-icon" (click)="saida()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </form>
+</div>
