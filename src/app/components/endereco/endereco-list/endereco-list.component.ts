@@ -44,7 +44,7 @@ export class EnderecoListComponent implements OnInit {
     dialogConfig.data = { orderItemIndex, OrderID };
     this.dialog.open(EnderecoEditComponent, dialogConfig).afterClosed().subscribe( res => {
       console.log("Retorno Dialog!");
-      //console.log(this.transitorio.enderecos.bairro);
+      console.log(res);
     });
     
   }

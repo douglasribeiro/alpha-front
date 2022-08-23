@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Form, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { updateLocale } from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { EstadoCivil } from 'src/app/models/estadoCivil';
 import { Inquilino } from 'src/app/models/inquilino';
@@ -15,6 +16,7 @@ import { DropdownService } from 'src/app/shared/services/dropdown.service';
 })
 export class InquilinoCreateComponent implements OnInit {
 
+  novo: boolean = false;
   address: boolean = false;
   phone: boolean = false;
   refer: boolean = false;
@@ -72,7 +74,11 @@ export class InquilinoCreateComponent implements OnInit {
     if(this.route.snapshot.paramMap.get('id') !== null){
       this.inquilino.id = this.route.snapshot.paramMap.get('id');
       this.findById();
+      this.novo = false;
+    }else{
+      this.novo = true;
     }
+    console.log(this.novo);
   }
 
   busca($event){
@@ -91,8 +97,27 @@ export class InquilinoCreateComponent implements OnInit {
   }
 
   create() {  
-    this.service.create(this.inquilino).subscribe(resposta => {
-      this.toast.success('Inquilino criado com sucesso.', 'Cadastro')
+    if(!this.novo) {
+      this.update()
+    } else {
+      this.service.create(this.inquilino).subscribe(resposta => {
+        this.toast.success('Inquilino alterado com sucesso.', 'Cadastro')
+        this.router.navigate(['tecnicos'])
+      }, ex => {
+        if(ex.error.errors) {
+          ex.error.errors.forEach(element => {
+            this.toast.error(element.message);
+          });
+        } else {
+          this.toast.error(ex.error.message);
+        }
+      })
+    }
+  }
+
+  update(){
+    this.service.update(this.inquilino).subscribe(resposta => {
+      this.toast.success('Inquilino alterado com sucesso.', 'Cadastro')
       this.router.navigate(['tecnicos'])
     }, ex => {
       if(ex.error.errors) {
@@ -103,9 +128,8 @@ export class InquilinoCreateComponent implements OnInit {
         this.toast.error(ex.error.message);
       }
     })
-  
   }
-
+  
   addPerfil(perfil: any): void {
     //if(this..perfis.includes(perfil)) {
     //  this.tecnico.perfis.splice(this.tecnico.perfis.indexOf(perfil), 1);

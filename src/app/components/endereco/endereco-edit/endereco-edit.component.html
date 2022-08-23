@@ -35,11 +35,19 @@
                 placeholder="Ex. Bairro">
         </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>Cidade</mat-label>
-            <input [(ngModel)]="endereco.cidade.nome" name="nome" [formControl]="cidade" required matInput
-                placeholder="Ex. Cidade">
-        </mat-form-field>
+        <div class="fullWidth">
+                <mat-form-field class="midWidth" appearance="legacy">
+                    <mat-label>Estado</mat-label>
+                    <input [(ngModel)]="endereco.cidade.estado.nome" name="nome" [formControl]="estado" required matInput
+                        placeholder="Ex. Estado">
+                </mat-form-field>
+            
+                <mat-form-field class="midWidth" appearance="legacy">
+                    <mat-label>Cidade</mat-label>
+                    <input [(ngModel)]="endereco.cidade.nome" name="nome" [formControl]="cidade" required matInput
+                        placeholder="Ex. Cidade">
+                </mat-form-field>
+        </div>
 
         <button mat-button class="close-icon" (click)="saida()">
             <mat-icon>close</mat-icon>

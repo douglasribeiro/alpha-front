@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Form, FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Endereco } from 'src/app/models/endereco';
 import { EstadoBR } from 'src/app/models/estadobr';
@@ -15,6 +15,7 @@ import { EstadosCidadesService } from 'src/app/shared/services/estados-cidades.s
 export class EnderecoEditComponent implements OnInit {
 
   endereco: Endereco;
+  estados: EstadoBR[];
 
   tipoEnderecos: EstadoCivil[] = [
     {value: "RESIDENCIAL", viewValue: "Residencial"},
@@ -32,6 +33,7 @@ export class EnderecoEditComponent implements OnInit {
 	cep:          FormControl = new FormControl(null);
 	tipoEndereco: FormControl = new FormControl(null);
 	inquilino:    FormControl = new FormControl(null);
+  estado:       FormControl = new FormControl(null);
 	cidade:       FormControl = new FormControl(null);
 
   constructor(
@@ -43,11 +45,13 @@ export class EnderecoEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.endereco = this.data.OrderID;
-    
+    this.estadoService.getEstados().subscribe(est => this.estados = est);
   }
 
   saida(){
-    this.dialogRef.close();
+    this.dialogRef.close({data: this.endereco});
   }
+
+
 
 }
