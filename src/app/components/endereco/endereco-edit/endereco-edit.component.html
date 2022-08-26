@@ -1,6 +1,8 @@
 <div>
     <form class="form">
 
+        <h1>Endereços</h1>
+
         <mat-form-field class="midWidth" appearance="legacy">
             <mat-label>Tipo Endereço</mat-label>
             <mat-select [(ngModel)]="endereco.tipoEndereco" name="tipoEndereco">
@@ -19,7 +21,7 @@
 
         <mat-form-field class="fullWidth" appearance="legacy">
             <mat-label>Numero</mat-label>
-            <input [(ngModel)]="endereco.numero" name="nome" [formControl]="numero" required matInput
+            <input [(ngModel)]="endereco.numero" name="numero" required matInput
                 placeholder="Ex. Numero">
         </mat-form-field>
 
@@ -36,21 +38,42 @@
         </mat-form-field>
 
         <div class="fullWidth">
-                <mat-form-field class="midWidth" appearance="legacy">
-                    <mat-label>Estado</mat-label>
-                    <input [(ngModel)]="endereco.cidade.estado.nome" name="nome" [formControl]="estado" required matInput
-                        placeholder="Ex. Estado">
-                </mat-form-field>
-            
-                <mat-form-field class="midWidth" appearance="legacy">
-                    <mat-label>Cidade</mat-label>
-                    <input [(ngModel)]="endereco.cidade.nome" name="nome" [formControl]="cidade" required matInput
-                        placeholder="Ex. Cidade">
-                </mat-form-field>
+            <mat-form-field class="treeWidth" appearance="legacy">
+                <mat-label>Estado</mat-label>
+                <mat-select [(ngModel)]="endereco.cidade.estado" name="estado" [formControl]="estado">
+                    <mat-option *ngFor="let te of estados" [value]="te.sigla">
+                        {{te.nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>Cidade</mat-label>
+                <mat-select [(ngModel)]="endereco.cidade" name="cidade">
+                    <mat-option *ngFor="let te of cidades" [value]="te.id">
+                        {{te.nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!--mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>Estado</mat-label>
+                <input [(ngModel)]="endereco.cidade.estado.nome" name="nome" [formControl]="estado" required matInput
+                    placeholder="Ex. Estado">
+            </mat-form-field
+        
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>Cidade</mat-label>
+                <input [(ngModel)]="endereco.cidade.nome" name="nome" [formControl]="cidade" required matInput
+                    placeholder="Ex. Cidade">
+            </mat-form-field>-->
         </div>
 
         <button mat-button class="close-icon" (click)="saida()">
-            <mat-icon>close</mat-icon>
+            <mat-icon>check_circle_outline</mat-icon>Salva
+        </button>
+        <button mat-button class="close-icon" (click)="abort()">
+            <mat-icon>clear</mat-icon>Cancela
         </button>
     </form>
 </div>

@@ -78,7 +78,6 @@ export class InquilinoCreateComponent implements OnInit {
     }else{
       this.novo = true;
     }
-    console.log(this.novo);
   }
 
   busca($event){

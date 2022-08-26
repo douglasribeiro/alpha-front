@@ -7,7 +7,7 @@
 
             <div class="fullWidth">
                 <mat-radio-group aria-labelledby="group-radio" [(ngModel)]="inquilino.pessoa" name="pessoa">
-                    <mat-radio-button *ngFor="let op of pessoasOp" [value]="op.valor">{{op.descr}}</mat-radio-button>
+                    <mat-radio-button *ngFor="let op of pessoasOp" [value]="op.valor" color="primary">{{op.descr}}</mat-radio-button>
                 </mat-radio-group>
             </div>
 
@@ -85,8 +85,8 @@
             </div>
             <button (click)="create()" [disabled]="!validaCampos()" class="midWidth mat-elevation-z4" mat-flat-button
                 color="primary">Cadastrar</button>
-            <button routerLink="../" class="midWidth mat-elevation-z4" mat-stroked-button
-                color="primary">Cancelar</button>
+            <button routerLink="/inquilino" class="midWidth mat-elevation-z4" mat-stroked-button
+                color="primary">Voltar</button>
         </form>
     </div>
 

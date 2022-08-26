@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Form, FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { empty, map, switchMap, tap } from 'rxjs';
+import { Cidade } from 'src/app/models/cidade';
 import { Endereco } from 'src/app/models/endereco';
 import { EstadoBR } from 'src/app/models/estadobr';
 import { EstadoCivil } from 'src/app/models/estadoCivil';
@@ -15,7 +17,9 @@ import { EstadosCidadesService } from 'src/app/shared/services/estados-cidades.s
 export class EnderecoEditComponent implements OnInit {
 
   endereco: Endereco;
+  enderecoAnt: Endereco;
   estados: EstadoBR[];
+  cidades: Cidade[];
 
   tipoEnderecos: EstadoCivil[] = [
     {value: "RESIDENCIAL", viewValue: "Residencial"},
@@ -45,13 +49,29 @@ export class EnderecoEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.endereco = this.data.OrderID;
-    this.estadoService.getEstados().subscribe(est => this.estados = est);
+    this.estadoService.getCidades(8).subscribe(c => this.cidades = c)
+    console.log(this.cidades)
+    this.estadoService.getEstados().subscribe(x => this.estados = x)
+    console.log(this.estados)
+    //this.estado.valueChanges
+    //.pipe(
+    //  tap(estado => console.log('Novo estado: ', estado)),
+    //  map(est => this.estados.filter(e => e.sigla == est)),
+    //  map(estados => estados && estados.length > 0 ? estados[0].id : empty()),
+    //  switchMap((estadoId: number) => this.estadoService.getCidades(estadoId)),
+    //  tap(console.log)
+    //)
+    //.subscribe(cidades => this.cidades = cidades);
+    
   }
 
   saida(){
     this.dialogRef.close({data: this.endereco});
   }
 
+  abort(){
+    this.dialogRef.close();
+  }
 
 
 }
