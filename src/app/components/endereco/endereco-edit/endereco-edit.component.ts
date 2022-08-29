@@ -49,24 +49,23 @@ export class EnderecoEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.endereco = this.data.OrderID;
-    this.estadoService.getCidades(8).subscribe(c => this.cidades = c)
-    console.log(this.cidades)
-    this.estadoService.getEstados().subscribe(x => this.estados = x)
-    console.log(this.estados)
-    //this.estado.valueChanges
-    //.pipe(
-    //  tap(estado => console.log('Novo estado: ', estado)),
-    //  map(est => this.estados.filter(e => e.sigla == est)),
-    //  map(estados => estados && estados.length > 0 ? estados[0].id : empty()),
-    //  switchMap((estadoId: number) => this.estadoService.getCidades(estadoId)),
-    //  tap(console.log)
-    //)
-    //.subscribe(cidades => this.cidades = cidades);
+    this.estadoService.getEstados().subscribe(x => {
+      this.estados = x;
+
+      this.estado.valueChanges
+      .pipe(
+        tap(estado => console.log('Novo estado: ', estado)),
+        map(est => this.estados.filter(e => e.sigla == est)),
+        map(estados => estados && estados.length > 0 ? estados[0].id : empty()),
+        switchMap((estadoId: number) => this.estadoService.getCidades(estadoId)),
+      )
+      .subscribe(cidades => this.cidades = cidades);
+    })
     
   }
 
   saida(){
-    this.dialogRef.close({data: this.endereco});
+    this.dialogRef.close({data: this.endereco});    
   }
 
   abort(){
