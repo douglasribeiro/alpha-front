@@ -42,7 +42,7 @@ export class EnderecoListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.width = "40%";
     dialogConfig.data = { orderItemIndex, OrderID };
-    console.log(OrderID);
+    //console.log("OrderID ", OrderID);
     this.dialog.open(EnderecoEditComponent, dialogConfig).afterClosed().subscribe( res => {
       console.log("Retorno Dialog!");
       console.log(res);

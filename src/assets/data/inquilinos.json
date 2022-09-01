@@ -1,0 +1,95 @@
+[
+    {
+        "includeDate": "2022-08-24 11:00:45",
+        "changeDate": null,
+        "id": 1,
+        "nome": "Inquilino",
+        "pessoa": "FISICO",
+        "cpfcnpj": "11111111111",
+        "identinscr": "Identidade",
+        "email": "inquilino@mail.com",
+        "dtNiver": null,
+        "estCivil": "SOLTEIRO",
+        "sexo": "Masculino",
+        "ativo": true,
+        "nacional": "Brasileiro",
+        "naturalidade": "São Paulo",
+        "telefones": [
+            "12345678",
+            "12345679"
+        ],
+        "enderecos": [
+            {
+                "id": 1,
+                "logradouro": "Rua um",
+                "numero": "100",
+                "complemento": null,
+                "bairro": "Centro",
+                "cep": "14800000",
+                "tipoEndereco": "ENTREGA",
+                "cidade": {
+                    "id": 5011,
+                    "nome": "Lindóia",
+                    "estado": 26
+                }
+            }
+        ]
+    },
+    {
+        "includeDate": "2022-08-24 11:00:45",
+        "changeDate": null,
+        "id": 2,
+        "nome": "Inquilino",
+        "pessoa": "JURIDICO",
+        "cpfcnpj": "11111111112",
+        "identinscr": "Identidade",
+        "email": "inquilino2@mail.com",
+        "dtNiver": null,
+        "estCivil": "AMAZIADO",
+        "sexo": "Masculino",
+        "ativo": true,
+        "nacional": "Brasileiro",
+        "naturalidade": "Salvador",
+        "telefones": [
+            "12345670",
+            "12345671"
+        ],
+        "enderecos": []
+    },
+    {
+        "includeDate": "2022-08-29 14:17:43",
+        "changeDate": null,
+        "id": 5,
+        "nome": "Inquilino 2",
+        "pessoa": "FISICO",
+        "cpfcnpj": "11111111113",
+        "identinscr": "Identidade",
+        "email": "inquilino3@mail.com",
+        "dtNiver": null,
+        "estCivil": "SOLTEIRO",
+        "sexo": "Masculino",
+        "ativo": true,
+        "nacional": "Brasileiro",
+        "naturalidade": "São Paulo",
+        "telefones": [
+            "12345678",
+            "12345679"
+        ],
+        "enderecos": [
+            {
+                "id": 2,
+                "logradouro": "Rua um",
+                "numero": "100",
+                "complemento": null,
+                "bairro": "Centro",
+                "cep": "14800000",
+                "tipoEndereco": "RESIDENCIAL",
+                "cidade": {
+                    "id": 5011,
+                    "nome": "Lindóia",
+                    "estado": 26
+                }
+            }
+        ]
+    }
+]

@@ -17,7 +17,7 @@ export class EstadosCidadesService {
     // return this.htpp.get<Inquilino>(`${API_CONFIG.baseUrl}/inquilino/${id}`) 
   }
 
-  getCidades(idEstado: any){
+  getCidades(idEstado: number){
     return this.httpClient.get<Cidade[]>("assets/data/cidades.json")
     .pipe(map((cidades: Cidade[]) => cidades.filter(c => c.estado == idEstado)));
   }
