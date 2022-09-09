@@ -2,6 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { API_CONFIG } from 'src/app/config/api.config';
 import { Cidade } from 'src/app/models/cidade';
 import { EstadoBR } from 'src/app/models/estadobr';
 
@@ -17,8 +18,9 @@ export class EstadosCidadesService {
     // return this.htpp.get<Inquilino>(`${API_CONFIG.baseUrl}/inquilino/${id}`) 
   }
 
-  getCidades(idEstado: number){
-    return this.httpClient.get<Cidade[]>("assets/data/cidades.json")
-    .pipe(map((cidades: Cidade[]) => cidades.filter(c => c.estado == idEstado)));
+  getCidades(idEstado: number): Observable<Cidade[]>{
+    return this.httpClient.get<Cidade[]>(`${API_CONFIG.baseUrl}/cidade/`+idEstado)
+    //return this.httpClient.get<Cidade[]>("assets/data/cidades.json")
+    //.pipe(map((cidades: Cidade[]) => cidades.filter(c => c.estado.id == idEstado)));
   }
 }

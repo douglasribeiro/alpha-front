@@ -53,4 +53,5 @@ export class EnderecoListComponent implements OnInit {
   updateGrandTotal() {
     throw new Error('Method not implemented.');
   }
+
 }

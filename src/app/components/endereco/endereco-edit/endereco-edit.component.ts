@@ -1,7 +1,8 @@
+import { EmptyExpr } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
-import { Form, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { empty, map, switchMap, tap } from 'rxjs';
+import { empty, map, pipe, switchMap, tap } from 'rxjs';
 import { Cidade } from 'src/app/models/cidade';
 import { Endereco } from 'src/app/models/endereco';
 import { EstadoBR } from 'src/app/models/estadobr';
@@ -18,8 +19,9 @@ export class EnderecoEditComponent implements OnInit {
 
   endereco: Endereco;
   enderecoAnt: Endereco;
-  //estados: EstadoBR[];
-  cidades: Cidade[];
+  estados: EstadoBR[];
+  cidades: Cidade[] = [];
+  form: FormGroup;
 
   tipoEnderecos: EstadoCivil[] = [
     {value: "RESIDENCIAL", viewValue: "Residencial"},
@@ -29,71 +31,42 @@ export class EnderecoEditComponent implements OnInit {
     {value: "RECADO", viewValue: "Recado"},
     {value: "OUTROS", viewValue: "Outros"}
   ]
-
-estados: EstadoBR[] = [
-  {id: "1", sigla: "AC", nome: "Acre"},
-  {id: "2", sigla: "AL", nome: "Alagoas"},
-  {id: "3", sigla: "AM", nome: "Amazonas"},
-  {id: "4", sigla: "AP", nome: "Amapá"},
-  {id: "5", sigla: "BA", nome: "Bahia"},
-  {id: "6", sigla: "CE", nome: "Ceará"},
-  {id: "7", sigla: "DF", nome: "Distrito Federal"},
-  {id: "8", sigla: "ES", nome: "Espírito Santo"},
-  {id: "9", sigla: "GO", nome: "Goiás"},
-  {id: "10", sigla: "MA", nome: "Maranhão"},
-  {id: "11", sigla: "MG", nome: "Minas Gerais"},
-  {id: "12", sigla: "MS", nome: "Mato Grosso do Sul"},
-  {id: "13", sigla: "MT", nome: "Mato Grosso"},
-  {id: "14", sigla: "PA", nome: "Pará"},
-  {id: "15", sigla: "PB", nome: "Paraíba"},
-  {id: "16", sigla: "PE", nome: "Pernambuco"},
-  {id: "17", sigla: "PI", nome: "Piauí"},
-  {id: "18", sigla: "PR", nome: "Paraná"},
-  {id: "19", sigla: "RJ", nome: "Rio de Janeiro"},
-  {id: "20", sigla: "RN", nome: "Rio Grande do Norte"},
-  {id: "21", sigla: "RO", nome: "Rondônia"},
-  {id: "22", sigla: "RR", nome: "Roraima"},
-  {id: "23", sigla: "RS", nome: "Rio Grande do Sul"},
-  {id: "24", sigla: "SC", nome: "Santa Catarina"},
-  {id: "25", sigla: "SE", nome: "Sergipe"},
-  {id: "26", sigla: "SP", nome: "São Paulo"},
-  {id: "27", sigla: "TO", nome: "Tocantins"
-  }
-]
-
-  logradouro:   FormControl = new FormControl(null);
-  numero:       FormControl = new FormControl(null);
-	complemento:  FormControl = new FormControl(null);
-	bairro:       FormControl = new FormControl(null);
-	cep:          FormControl = new FormControl(null);
-	tipoEndereco: FormControl = new FormControl(null);
-	inquilino:    FormControl = new FormControl(null);
-  //estado:       FormControl = new FormControl(null);
-	cidade:       FormControl = new FormControl(null);
-
+  
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
     public estadoService: EstadosCidadesService,
     public transitorio: TransitorioService,
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<EnderecoEditComponent>
   ) { }
 
   ngOnInit(): void {
     this.endereco = this.data.OrderID;
-    console.log(this.endereco)
-    //this.estadoService.getEstados().subscribe(x => {
-    //  this.estados = x;
-
-      //this.estado.valueChanges
-      //.pipe(
-      //  tap(estado => console.log('Novo estado: ', estado)),
-      //  map(est => this.estados.filter(e => e.id == est)),
-      //  map(estados => estados && estados.length > 0 ? estados[0].id : empty()),
-      //  switchMap((estadoId: number) => this.estadoService.getCidades(estadoId)),
-      //)
-      //.subscribe();
-      //.subscribe(cidades => this.cidades = cidades);
-    //})  
+    this.form = this.formBuilder.group({
+      logradouro:   [this.endereco.logradouro],
+      numero:       [this.endereco.numero],
+	    complemento:  [this.endereco.complemento],
+	    bairro:       [this.endereco.bairro],
+	    cep:          [this.endereco.cep],
+	    tipoEndereco: [this.endereco.tipoEndereco],
+	    cidade: this.formBuilder.group({
+        id: [this.endereco.cidade.id],
+        nome: [this.endereco.cidade.nome],
+        estado: this.formBuilder.group({
+          id: [this.endereco.cidade.estado.id],
+          sigla: [this.endereco.cidade.estado.sigla],
+          nome: [this.endereco.cidade.estado.nome]
+        })
+      })
+    })
+    
+    this.estadoService.getEstados().subscribe(est => this.estados = est)
+    this.form.get('cidade.estado.sigla').valueChanges
+      .pipe(
+        tap(sigla => console.log('Novo estado.: ', sigla)),
+        switchMap((estadoId: number) => this.estadoService.getCidades(estadoId)),
+      )
+      .subscribe(cidades => this.cidades = cidades);
   }
 
   saida(){
@@ -105,5 +78,6 @@ estados: EstadoBR[] = [
     this.dialogRef.close();
   }
 
+  
 
 }
