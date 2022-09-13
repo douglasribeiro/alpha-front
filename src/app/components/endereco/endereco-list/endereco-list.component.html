@@ -3,7 +3,7 @@
   <h1>Endereços</h1>
 
 
-  <button routerLink="create" class="mat-elevation-z8" mat-stroked-button color="primary">Novo Endereço</button>
+  <button class="mat-elevation-z8" mat-stroked-button color="primary" (click)="AddOrEditOrderItem(null,null)">Novo Endereço</button>
 
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">

@@ -42,6 +42,7 @@ import { ReferenciaListComponent } from './components/referencia/referencia-list
 import { EnderecoEditComponent } from './components/endereco/endereco-edit/endereco-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { EnderecoCreateComponent } from './components/endereco/endereco-create/endereco-create.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { BrowserModule } from '@angular/platform-browser';
     EnderecoListComponent,
     TelefoneListComponent,
     ReferenciaListComponent,
-    EnderecoEditComponent
+    EnderecoEditComponent,
+    EnderecoCreateComponent
   ],
   imports: [
     BrowserModule,

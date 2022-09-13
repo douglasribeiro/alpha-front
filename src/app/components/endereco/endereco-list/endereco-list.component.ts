@@ -2,9 +2,12 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Cidade } from 'src/app/models/cidade';
 import { Endereco } from 'src/app/models/endereco';
+import { EstadoBR } from 'src/app/models/estadobr';
 import { Inquilino } from 'src/app/models/inquilino';
 import { TransitorioService } from 'src/app/services/transitorio.service';
+import { EnderecoCreateComponent } from '../endereco-create/endereco-create.component';
 import { EnderecoEditComponent } from '../endereco-edit/endereco-edit.component';
 
 @Component({
@@ -38,8 +41,8 @@ export class EnderecoListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.width = "40%";
     dialogConfig.data = { orderItemIndex, OrderID };
-    console.log("entrada no dialog!", OrderID);
-    //if (OrderID) {
+    //console.log("entrada no dialog!", OrderID);
+    if (OrderID) {
       this.dialog.open(EnderecoEditComponent, dialogConfig).afterClosed().subscribe( res => {
         if (res){
           console.log("retorno positivo!", res);
@@ -59,14 +62,38 @@ export class EnderecoListComponent implements OnInit {
               this.inq.enderecos[i].complemento = res.complemento;
             }
           }
-          
-        }else{
-          //console.log('Inq.enderecos ',this.inq.enderecos)
-          //console.log('Enderecos', this.inq)
-          console.log("retorno negativo!", res);
         }
       })
-    //}
+    } else {
+      this.dialog.open(EnderecoCreateComponent, dialogConfig).afterClosed().subscribe( res => {
+        if (res){
+          console.log("retorno positivo!", res);
+          const novoEstado: EstadoBR = {
+            id: res.cidade.estado.id,
+            sigla: res.cidade.estado.sigla,
+            nome: res.cidade.estado.nome
+          }
+          const novaCidade: Cidade = {
+            id: res.cidade.id,
+            nome: res.cidade.nome,
+            estado: novoEstado
+          }
+          const novoEndereco: Endereco = {
+            logradouro: res.logradouro,
+            numero: res.numero,
+            complemento: res.complemento,
+            bairro: res.bairro,
+            cep: res.cep,
+            tipoEndereco: res.tipoEndereco,
+            cidade: novaCidade,
+            inquilino: this.inq.id
+          };
+          this.inq.enderecos.push(novoEndereco)
+          console.log('Novo Endereço ', this.inq.enderecos);
+          this.ngOnInit();
+        }
+      })
+    }
     
     
   }

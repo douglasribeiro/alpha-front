@@ -99,8 +99,8 @@ export class InquilinoCreateComponent implements OnInit {
       this.update()
     } else {
       this.service.create(this.inquilino).subscribe(resposta => {
-        this.toast.success('Inquilino alterado com sucesso.', 'Cadastro')
-        this.router.navigate(['tecnicos'])
+        this.toast.success('Inquilino criado com sucesso.', 'Cadastro')
+        this.router.navigate(['inquilino'])
       }, ex => {
         if(ex.error.errors) {
           ex.error.errors.forEach(element => {
@@ -116,7 +116,7 @@ export class InquilinoCreateComponent implements OnInit {
   update(){
     this.service.update(this.inquilino).subscribe(resposta => {
       this.toast.success('Inquilino alterado com sucesso.', 'Cadastro')
-      this.router.navigate(['tecnicos'])
+      this.router.navigate(['inquilino'])
     }, ex => {
       if(ex.error.errors) {
         ex.error.errors.forEach(element => {
