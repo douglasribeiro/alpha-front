@@ -1,8 +1,7 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-import { Form, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { updateLocale } from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { EstadoCivil } from 'src/app/models/estadoCivil';
 import { Inquilino } from 'src/app/models/inquilino';

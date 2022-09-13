@@ -22,6 +22,12 @@
     margin-bottom: .3rem;
 }
 
+.oneFourWidth{
+    width: 64%;
+    margin-right: .5rem;
+    margin-bottom: .3rem;
+}
+
 h1 {
     text-align: center;
 }
