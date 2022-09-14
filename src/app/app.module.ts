@@ -26,7 +26,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { ToastrModule } from 'ngx-toastr';
-import { timeout } from 'rxjs';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
 import { NgxMaskModule } from 'ngx-mask';
@@ -36,7 +35,7 @@ import { InquililinoListComponent } from './components/inquilino/inquililino-lis
 import { InquilinoCreateComponent } from './components/inquilino/inquilino-create/inquilino-create.component';
 import { EnderecoListComponent } from './components/endereco/endereco-list/endereco-list.component';
 import { TelefoneListComponent } from './components/telefone/telefone-list/telefone-list.component';
-import {MatDatepickerInputEvent, MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { ReferenciaListComponent } from './components/referencia/referencia-list/referencia-list.component';
 import { EnderecoEditComponent } from './components/endereco/endereco-edit/endereco-edit.component';

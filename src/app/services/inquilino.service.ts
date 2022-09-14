@@ -24,8 +24,6 @@ export class InquilinoService {
   }
 
   update(inquilino: Inquilino): Observable<Inquilino> {
-    //inquilino.perfis = ["1"];
-    console.log("inquilino..................... ", inquilino);
     return this.htpp.put<Inquilino>(`${API_CONFIG.baseUrl}/inquilino/${inquilino.id}`, inquilino);
   }
 

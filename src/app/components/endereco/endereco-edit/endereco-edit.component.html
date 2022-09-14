@@ -22,12 +22,12 @@
             <div formGroupName="estado">
                 <mat-form-field class="fullWidth" appearance="legacy">
                     <mat-label>Estado</mat-label>
-                    <input [ngModel]="endereco.cidade.estado.nome" name="nomeUf" formControlName="nomeUf" readonly="true" matInput>
+                    <input name="nomeUf" formControlName="nomeUf" readonly="true" matInput>
                 </mat-form-field>
             </div>
             <mat-form-field class="fullWidth" appearance="legacy">
                 <mat-label>Cidade</mat-label>
-                <input [(ngModel)]="endereco.cidade.nome" name="nome" formControlName="nome" readonly="true" matInput>
+                <input name="nome" formControlName="nome" readonly="true" matInput>
             </mat-form-field>
         </div>
         
@@ -70,7 +70,7 @@
 
         <mat-form-field class="oneFourWidth" appearance="legacy">
             <mat-label>Bairro</mat-label>
-            <input [ngModel]="endereco.bairro" name="nome" formControlName="bairro" readonly="true" matInput
+            <input name="nome" formControlName="bairro" readonly="true" matInput
                 placeholder="Ex. Bairro">
         </mat-form-field>
         </div>

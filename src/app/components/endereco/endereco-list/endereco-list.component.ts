@@ -44,13 +44,13 @@ export class EnderecoListComponent implements OnInit {
     dialogConfig.data = { orderItemIndex, OrderID };
     this.dialog.open(EnderecoDeleteComponent, dialogConfig).afterClosed().subscribe( res => {
       if(res){
-        console.log("eclusão confirmada.........", this.inq.enderecos);
+        //console.log("eclusão confirmada.........", this.inq.enderecos);
         let enderecosSalvos: Endereco[] = [];
         for (let i = 0; i < this.inq.enderecos.length; i++){
           if(this.inq.enderecos[i].id != res.id)
             enderecosSalvos.push(this.inq.enderecos[i])
         }
-        console.log("lista final.........", enderecosSalvos);
+       // console.log("lista final.........", enderecosSalvos);
         this.inq.enderecos = enderecosSalvos;
         this.ngOnInit();
       }
