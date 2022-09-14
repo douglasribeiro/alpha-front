@@ -8,6 +8,7 @@ import { EstadoBR } from 'src/app/models/estadobr';
 import { Inquilino } from 'src/app/models/inquilino';
 import { TransitorioService } from 'src/app/services/transitorio.service';
 import { EnderecoCreateComponent } from '../endereco-create/endereco-create.component';
+import { EnderecoDeleteComponent } from '../endereco-delete/endereco-delete.component';
 import { EnderecoEditComponent } from '../endereco-edit/endereco-edit.component';
 
 @Component({
@@ -33,6 +34,27 @@ export class EnderecoListComponent implements OnInit {
     this.ELEMENT_DATA = this.inq.enderecos;
     this.dataSource = new MatTableDataSource<Endereco>(this.ELEMENT_DATA);
     this.dataSource.paginator = this.paginator;
+  }
+
+  excluiEndereco(orderItemIndex, OrderID){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.width = "40%";
+    dialogConfig.data = { orderItemIndex, OrderID };
+    this.dialog.open(EnderecoDeleteComponent, dialogConfig).afterClosed().subscribe( res => {
+      if(res){
+        console.log("eclusão confirmada.........", this.inq.enderecos);
+        let enderecosSalvos: Endereco[] = [];
+        for (let i = 0; i < this.inq.enderecos.length; i++){
+          if(this.inq.enderecos[i].id != res.id)
+            enderecosSalvos.push(this.inq.enderecos[i])
+        }
+        console.log("lista final.........", enderecosSalvos);
+        this.inq.enderecos = enderecosSalvos;
+        this.ngOnInit();
+      }
+    });
   }
 
   AddOrEditOrderItem(orderItemIndex, OrderID) {
@@ -69,9 +91,9 @@ export class EnderecoListComponent implements OnInit {
         if (res){
           console.log("retorno positivo!", res);
           const novoEstado: EstadoBR = {
-            id: res.cidade.estado.id,
+            id: res.cidade.estado.idUf,
             sigla: res.cidade.estado.sigla,
-            nome: res.cidade.estado.nome
+            nome: res.cidade.estado.nomeUf
           }
           const novaCidade: Cidade = {
             id: res.cidade.id,
