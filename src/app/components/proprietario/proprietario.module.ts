@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProprietarioRoutingModule } from './proprietario-routing.module';
-import { ProprietarioListComponent } from '../proprietario-list/proprietario-list.component';
+import { ProprietarioListComponent } from './proprietario-list/proprietario-list.component';
 
 
 @NgModule({
