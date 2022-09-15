@@ -22,6 +22,8 @@ const routes: Routes = [
     .then(m => m.ProprietarioModule)},
     {path: 'tecnico', loadChildren: () => import('./components/tecnico/tecnico.module')
     .then(m => m.TecnicoModule)},
+    {path: 'admin', loadChildren: () => import('./admin/admin.module')
+    .then(m => m.AdminModule)},
   ]}
 ];
 
