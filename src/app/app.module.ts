@@ -10,14 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
 import { LoginComponent } from './components/login/login.component';
-import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
-import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
-import { NgxMaskModule } from 'ngx-mask';
-import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
-import { TecnicoDeleteComponent } from './components/tecnico/tecnico-delete/tecnico-delete.component';
-import { InquililinoListComponent } from './components/inquilino/inquililino-list/inquililino-list.component';
-import { InquilinoCreateComponent } from './components/inquilino/inquilino-create/inquilino-create.component';
 import { EnderecoListComponent } from './components/endereco/endereco-list/endereco-list.component';
 import { TelefoneListComponent } from './components/telefone/telefone-list/telefone-list.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -38,14 +31,7 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     TecnicoListComponent,
     LoginComponent,
-    InquililinoListComponent,
-    InquilinoCreateComponent,
-    EnderecoListComponent,
-    TelefoneListComponent,
-    ReferenciaListComponent,
-    EnderecoEditComponent,
-    EnderecoCreateComponent,
-    EnderecoDeleteComponent,
+    
   ],
   imports: [
     BrowserModule,
