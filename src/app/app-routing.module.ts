@@ -25,7 +25,9 @@ const routes: Routes = [
     {path: 'inquilino/create', component: InquilinoCreateComponent},
     {path: 'inquilino/create/:id', component: InquilinoCreateComponent},
     {path: 'endereco/create', component: EnderecoCreateComponent},
-    {path: 'endereco/edit/:id', component: EnderecoEditComponent}
+    {path: 'endereco/edit/:id', component: EnderecoEditComponent},
+    {path: 'proprietario', loadChildren: () => import('./components/proprietario/proprietario/proprietario.module')
+    .then(m => m.ProprietarioModule)},
   ]}
 ];
 

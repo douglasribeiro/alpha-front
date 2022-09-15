@@ -4,21 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
-import {MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
@@ -36,13 +21,14 @@ import { InquilinoCreateComponent } from './components/inquilino/inquilino-creat
 import { EnderecoListComponent } from './components/endereco/endereco-list/endereco-list.component';
 import { TelefoneListComponent } from './components/telefone/telefone-list/telefone-list.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { ReferenciaListComponent } from './components/referencia/referencia-list/referencia-list.component';
 import { EnderecoEditComponent } from './components/endereco/endereco-edit/endereco-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { EnderecoCreateComponent } from './components/endereco/endereco-create/endereco-create.component';
 import { EnderecoDeleteComponent } from './components/endereco/endereco-delete/endereco-delete.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -62,7 +48,7 @@ import { EnderecoDeleteComponent } from './components/endereco/endereco-delete/e
     ReferenciaListComponent,
     EnderecoEditComponent,
     EnderecoCreateComponent,
-    EnderecoDeleteComponent
+    EnderecoDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,30 +58,8 @@ import { EnderecoDeleteComponent } from './components/endereco/endereco-delete/e
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatPaginatorModule,
-    MatSnackBarModule,
-    MatCheckboxModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatTableModule,
-    MatRadioModule,
-    MatInputModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    MatDialogModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatInputModule,
-    ToastrModule.forRoot({
-      timeOut: 4000,
-      closeButton: true,
-      progressBar: true
-}),
-    NgxMaskModule.forRoot()
+    SharedModule,
+    
   ],
   providers: [AuthInterceptorProvider,
   MatDatepickerModule, {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
