@@ -1,3 +1,4 @@
+import { Telefone } from "../components/telefone/telefone";
 import { Endereco } from "./endereco";
 
 export interface Inquilino {
@@ -13,7 +14,7 @@ export interface Inquilino {
 	ativo: boolean;
 	nacional: string;
 	naturalidade: string;
-	telefones: String[];
+	telefones: Telefone[];
 	enderecos: Endereco[];
 
 }
