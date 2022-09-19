@@ -11,7 +11,7 @@ import { TelefoneEditComponent } from '../telefone-edit/telefone-edit.component'
 @Component({
   selector: 'app-telefone-list',
   templateUrl: './telefone-list.component.html',
-  styleUrls: ['./telefone-list.component.css']
+  styleUrls: ['../telefone.component.css']
 })
 export class TelefoneListComponent implements OnInit {
 

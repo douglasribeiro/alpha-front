@@ -24,8 +24,7 @@ import { SharedModule } from './shared/shared.module';
     HomeComponent,
     HeaderComponent,
     TecnicoListComponent,
-    LoginComponent,
-    
+    LoginComponent,    
   ],
   imports: [
     BrowserModule,

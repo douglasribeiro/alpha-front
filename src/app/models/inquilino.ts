@@ -17,6 +17,6 @@ export interface Inquilino {
 	naturalidade: string;
 	telefones: Telefone[];
 	enderecos: Endereco[];
-	referencia: Referencia[];
+	referencias: Referencia[];
 
 }

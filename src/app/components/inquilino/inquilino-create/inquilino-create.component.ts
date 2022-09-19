@@ -45,7 +45,7 @@ export class InquilinoCreateComponent implements OnInit {
     naturalidade: '',
     telefones: [],
     enderecos: [],
-    referencia:[]
+    referencias:[]
   }
 
   nome:         FormControl = new FormControl(null, [Validators.required]);

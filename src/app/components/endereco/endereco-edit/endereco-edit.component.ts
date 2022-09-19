@@ -14,7 +14,7 @@ import { EstadosCidadesService } from 'src/app/shared/services/estados-cidades.s
 @Component({
   selector: 'app-endereco-edit',
   templateUrl: './endereco-edit.component.html',
-  styleUrls: ['./endereco-edit.component.css']
+  styleUrls: ['../endereco.component.css']
 })
 export class EnderecoEditComponent implements OnInit {
 

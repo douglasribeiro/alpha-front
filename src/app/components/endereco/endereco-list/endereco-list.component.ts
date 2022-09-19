@@ -14,7 +14,7 @@ import { EnderecoEditComponent } from '../endereco-edit/endereco-edit.component'
 @Component({
   selector: 'app-endereco-list',
   templateUrl: './endereco-list.component.html',
-  styleUrls: ['./endereco-list.component.css']
+  styleUrls: ['../endereco.component.css']
 })
 export class EnderecoListComponent implements OnInit {
 

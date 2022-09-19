@@ -14,6 +14,8 @@ import { ReferenciaListComponent } from '../referencia/referencia-list/referenci
 import { TelefoneListComponent } from '../telefone/telefone-list/telefone-list.component';
 import { TelefoneEditComponent } from '../telefone/telefone-edit/telefone-edit.component';
 import { TelefoneCreateComponent } from '../telefone/telefone-create/telefone-create.component';
+import { ReferenciaEditComponent } from '../referencia/referencia-edit/referencia-edit.component';
+import { ReferenciaCreateComponent } from '../referencia/referencia-create/referencia-create.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { TelefoneCreateComponent } from '../telefone/telefone-create/telefone-cr
     EnderecoDeleteComponent,
     TelefoneEditComponent,
     TelefoneCreateComponent,
+    ReferenciaEditComponent,
+    ReferenciaCreateComponent,
   ],
   imports: [
     CommonModule,

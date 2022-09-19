@@ -25,7 +25,6 @@ export class InquililinoListComponent implements OnInit {
 
   findAll(){
     this.service.findAll().subscribe(resposta => {
-      console.log(resposta);
       this.ELEMENT_DATA = resposta;
       this.dataSource = new MatTableDataSource<Inquilino>(this.ELEMENT_DATA);
       this.dataSource.paginator = this.paginator;
