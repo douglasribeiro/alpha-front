@@ -1,5 +1,6 @@
 import { Telefone } from "../components/telefone/telefone";
 import { Endereco } from "./endereco";
+import { Referencia } from "./referencia";
 
 export interface Inquilino {
     id: any;
@@ -16,5 +17,6 @@ export interface Inquilino {
 	naturalidade: string;
 	telefones: Telefone[];
 	enderecos: Endereco[];
+	referencia: Referencia[];
 
 }

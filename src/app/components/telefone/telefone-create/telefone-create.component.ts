@@ -4,27 +4,27 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Telefone } from '../telefone';
 
 @Component({
-  selector: 'app-telefone-edit',
-  templateUrl: './telefone-edit.component.html',
+  selector: 'app-telefone-create',
+  templateUrl: './telefone-create.component.html',
   styleUrls: ['../telefone.component.css']
 })
-export class TelefoneEditComponent implements OnInit {
+export class TelefoneCreateComponent implements OnInit {
 
   form: FormGroup;
   telefone: Telefone;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
-    public dialogRef: MatDialogRef<TelefoneEditComponent>,
+    public dialogRef: MatDialogRef<TelefoneCreateComponent>,
     private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
     this.telefone = this.data.OrderID;
     this.form = this.formBuilder.group({
-      id:     [this.telefone.id],
-      ddd:    [this.telefone.ddd],
-      numero: [this.telefone.numero]
+      id:     [''],
+      ddd:    [''],
+      numero: ['']
     })
   }
 

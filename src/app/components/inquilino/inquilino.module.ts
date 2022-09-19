@@ -13,6 +13,7 @@ import { EnderecoListComponent } from '../endereco/endereco-list/endereco-list.c
 import { ReferenciaListComponent } from '../referencia/referencia-list/referencia-list.component';
 import { TelefoneListComponent } from '../telefone/telefone-list/telefone-list.component';
 import { TelefoneEditComponent } from '../telefone/telefone-edit/telefone-edit.component';
+import { TelefoneCreateComponent } from '../telefone/telefone-create/telefone-create.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { TelefoneEditComponent } from '../telefone/telefone-edit/telefone-edit.c
     EnderecoCreateComponent,
     EnderecoDeleteComponent,
     TelefoneEditComponent,
+    TelefoneCreateComponent,
   ],
   imports: [
     CommonModule,

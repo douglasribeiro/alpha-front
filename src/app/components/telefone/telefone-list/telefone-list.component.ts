@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Inquilino } from 'src/app/models/inquilino';
 import { TransitorioService } from 'src/app/services/transitorio.service';
 import { Telefone } from '../telefone';
+import { TelefoneCreateComponent } from '../telefone-create/telefone-create.component';
 import { TelefoneEditComponent } from '../telefone-edit/telefone-edit.component';
 
 @Component({
@@ -42,53 +43,22 @@ export class TelefoneListComponent implements OnInit {
     if (OrderID) {
       this.dialog.open(TelefoneEditComponent, dialogConfig).afterClosed().subscribe( res => {
         if (res){
-          console.log("retorno positivo!", res);
-          /*
-          var ocurs = this.inq.enderecos.length;
+          console.log("retorno positivo (Telefone)!", res);
+          var ocurs = this.inq.telefones.length;
           for (let i = 0; i < ocurs; i++){
-            if(this.inq.enderecos[i].id == res.id){
-              this.inq.enderecos[i].cep = res.cep;
-              this.inq.enderecos[i].logradouro = res.logradouro;
-              this.inq.enderecos[i].numero = res.numero;
-              this.inq.enderecos[i].tipoEndereco = res.tipoEndereco;
-              this.inq.enderecos[i].bairro = res.bairro;
-              this.inq.enderecos[i].cidade.estado.id = res.cidade.estado.id;
-              this.inq.enderecos[i].cidade.estado.nome = res.cidade.estado.nome;
-              this.inq.enderecos[i].cidade.estado.sigla = res.cidade.estado.sigla;
-              this.inq.enderecos[i].cidade.id = res.cidade.id;
-              this.inq.enderecos[i].cidade.nome = res.cidade.nome;
-              this.inq.enderecos[i].complemento = res.complemento;
+            if(this.inq.telefones[i].id == res.id){
+              this.inq.telefones[i].ddd = res.ddd;
+              this.inq.telefones[i].numero = res.numero;
             }
-          }*/
+          }
+          this.ngOnInit();
         }
       })
     } else {
-      this.dialog.open(TelefoneEditComponent, dialogConfig).afterClosed().subscribe( res => {
+      this.dialog.open(TelefoneCreateComponent, dialogConfig).afterClosed().subscribe( res => {
         if (res){
           console.log("retorno positivo!", res);
-     /*     const novoEstado: EstadoBR = {
-            id: res.cidade.estado.idUf,
-            sigla: res.cidade.estado.sigla,
-            nome: res.cidade.estado.nomeUf
-          }
-          const novaCidade: Cidade = {
-            id: res.cidade.id,
-            nome: res.cidade.nome,
-            estado: novoEstado
-          }
-          const novoEndereco: Endereco = {
-            logradouro: res.logradouro,
-            numero: res.numero,
-            complemento: res.complemento,
-            bairro: res.bairro,
-            cep: res.cep,
-            tipoEndereco: res.tipoEndereco,
-            cidade: novaCidade,
-            inquilino: this.inq.id
-          };
-          this.inq.enderecos.push(novoEndereco)
-          console.log('Novo Endereço ', this.inq.enderecos);
-          this.ngOnInit();*/
+          this.inq.telefones.push(res);
         }
       })
     }   
