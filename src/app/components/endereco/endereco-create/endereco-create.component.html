@@ -1,68 +1,72 @@
-<div>
-    <form class="form" [formGroup]="form">
+<div class="divForm">
+    <form class="form"> 
 
-        <h1>Endereços</h1>
+        <h1>Endereço</h1>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>CEP</mat-label>
-            <input name="cep" formControlName="cep" required matInput
-                placeholder="Ex. 01111-000">
-        </mat-form-field>
+        <div class="fullWidth">
 
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>Tipo Endereço</mat-label>
-            <mat-select  id="tipoEndereco" formControlName="tipoEndereco">
-                <mat-option *ngFor="let te of tipoEnderecos" [value]="te.value">
-                    {{te.viewValue}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>CEP</mat-label>
+                <input [(ngModel)]="endereco.cep" name="cep" [formControl]="cep" (blur)="verCep()" required matInput
+                placeholder="Ex. 00.000-000" mask="00.000-000">
+            </mat-form-field>
 
-        <div formGroupName="cidade">
-            <div formGroupName="estado">
-                <mat-form-field class="fullWidth" appearance="legacy">
-                    <mat-label>Estado</mat-label>
-                    <input name="nomeUf" formControlName="nomeUf" readonly="true" matInput>
-                </mat-form-field>
-            </div>
-            <mat-form-field class="fullWidth" appearance="legacy">
-                <mat-label>Cidade</mat-label>
-                <input name="nome" formControlName="nome" readonly="true" matInput>
+        
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>Tipo Endereço</mat-label>
+                <mat-select [(ngModel)]="endereco.tipoEndereco" [formControl]="tipoEndereco" required matInput>
+                    <mat-option *ngFor="let te of tipoEnderecos" [value]="te.value">
+                        {{te.viewValue}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="oneFourWidth" appearance="legacy">
             <mat-label>Logradouro</mat-label>
-            <input name="nome" formControlName="logradouro" readonly="true" matInput
+            <input [(ngModel)]="endereco.logradouro" [formControl]="logradouro" readonly="true" matInput
                 placeholder="Ex. Logradouro">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
-        <div class="fullWidth">
         <mat-form-field class="treeWidth"  appearance="legacy">
             <mat-label>Numero</mat-label>
-            <input name="numero" formControlName="numero" required matInput
+            <input [(ngModel)]="endereco.numero" [formControl]="numero" matInput
                 placeholder="Ex. Numero">
         </mat-form-field>
 
-        <mat-form-field class="oneFourWidth" appearance="legacy">
+        <mat-form-field class="midWidth" appearance="legacy">
             <mat-label>Bairro</mat-label>
-            <input name="nome" formControlName="bairro" readonly="true" matInput
+            <input [(ngModel)]="endereco.bairro" [formControl]="bairro" readonly="true" matInput
                 placeholder="Ex. Bairro">
-        </mat-form-field>
-        </div>
+        </mat-form-field> 
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="midWidth" appearance="legacy">
             <mat-label>Complemento</mat-label>
-            <input name="nome" formControlName="complemento" required matInput
+            <input [(ngModel)]="endereco.complemento" [formControl]="complemento" matInput
                 placeholder="Ex. Complemento">
         </mat-form-field>
 
-        <button mat-button class="close-icon" (click)="saida()">
-            <mat-icon>check_circle_outline</mat-icon>Salva
-        </button>
-        <button mat-button class="close-icon" (click)="abort()">
-            <mat-icon>clear</mat-icon>Cancela
-        </button>
+        <mat-form-field class="oneFourWidth" appearance="legacy">
+            <mat-label>Cidade</mat-label>
+            <input [(ngModel)]="endereco.cidade" [formControl]="cidade" readonly="true" matInput
+            placeholder="Ex. Cidade">
+        </mat-form-field>
+
+        <mat-form-field class="treeWidth" appearance="legacy">
+            <mat-label>Estado</mat-label>
+            <input [(ngModel)]="endereco.estado" [formControl]="estado" readonly="true" matInput
+            placeholder="Ex. Estado">
+        </mat-form-field>
+
+        
+        <div class="fullWidth">
+            <button mat-button class="close-icon midWidth" (click)="salva()">
+                <mat-icon>check_circle_outline</mat-icon>Salva
+            </button>
+            <button mat-button class="close-icon midWidth" (click)="abort()">
+                <mat-icon>clear</mat-icon>Cancela
+            </button>
+        </div>
     </form>
 </div>

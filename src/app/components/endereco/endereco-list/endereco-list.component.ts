@@ -1,10 +1,8 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Cidade } from 'src/app/models/cidade';
 import { Endereco } from 'src/app/models/endereco';
-import { EstadoBR } from 'src/app/models/estadobr';
 import { Inquilino } from 'src/app/models/inquilino';
 import { TransitorioService } from 'src/app/services/transitorio.service';
 import { EnderecoCreateComponent } from '../endereco-create/endereco-create.component';
@@ -20,18 +18,21 @@ export class EnderecoListComponent implements OnInit {
 
   @Input() public inq: Inquilino;
   endList: boolean = true;
+  nomeInquilino: string;
   
   constructor(
     public dialog: MatDialog,
-    public transitorio: TransitorioService) { }
+    public transitorio: TransitorioService,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
   ELEMENT_DATA: Endereco[] = []
 
   displayedColumns: string[] = ['id', 'logradouro', 'numero', 'cep', 'tipo', 'acoes'];
-  dataSource = new MatTableDataSource<Endereco>(this.ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Endereco>(this.data.enderecos);
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit(): void {
-    this.ELEMENT_DATA = this.inq.enderecos;
+    this.nomeInquilino = this.data.reg.nome;
+    this.ELEMENT_DATA = this.data.reg.enderecos;
     this.dataSource = new MatTableDataSource<Endereco>(this.ELEMENT_DATA);
     this.dataSource.paginator = this.paginator;
   }
@@ -39,19 +40,15 @@ export class EnderecoListComponent implements OnInit {
   excluiEndereco(orderItemIndex, OrderID){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.disableClose = true;
-    dialogConfig.width = "40%";
+    dialogConfig.width = "50%";
+    dialogConfig.maxHeight = "80%";
     dialogConfig.data = { orderItemIndex, OrderID };
     this.dialog.open(EnderecoDeleteComponent, dialogConfig).afterClosed().subscribe( res => {
       if(res){
-        //console.log("eclusão confirmada.........", this.inq.enderecos);
-        let enderecosSalvos: Endereco[] = [];
-        for (let i = 0; i < this.inq.enderecos.length; i++){
-          if(this.inq.enderecos[i].id != res.id)
-            enderecosSalvos.push(this.inq.enderecos[i])
-        }
-       // console.log("lista final.........", enderecosSalvos);
-        this.inq.enderecos = enderecosSalvos;
+        //console.log("Saida Delete ", res);
+        //console.log("lista ", this.data.reg.enderecos);
+        this.data.reg.enderecos = this.data.reg.enderecos.filter(h => h.id !== res.id)
+        //console.log("lista removido ", this.data.reg.enderecos);
         this.ngOnInit();
       }
     });
@@ -60,65 +57,55 @@ export class EnderecoListComponent implements OnInit {
   AddOrEditOrderItem(orderItemIndex, OrderID) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.disableClose = true;
-    dialogConfig.width = "40%";
+    dialogConfig.width = "50%";
+    dialogConfig.maxHeight = "80%";
     dialogConfig.data = { orderItemIndex, OrderID };
-    //console.log("entrada no dialog!", OrderID);
-    if (OrderID) {
-      this.dialog.open(EnderecoEditComponent, dialogConfig).afterClosed().subscribe( res => {
-        if (res){
-          console.log("retorno positivo!", res);
-          var ocurs = this.inq.enderecos.length;
-          for (let i = 0; i < ocurs; i++){
-            if(this.inq.enderecos[i].id == res.id){
-              this.inq.enderecos[i].cep = res.cep;
-              this.inq.enderecos[i].logradouro = res.logradouro;
-              this.inq.enderecos[i].numero = res.numero;
-              this.inq.enderecos[i].tipoEndereco = res.tipoEndereco;
-              this.inq.enderecos[i].bairro = res.bairro;
-              this.inq.enderecos[i].cidade.estado.id = res.cidade.estado.id;
-              this.inq.enderecos[i].cidade.estado.nome = res.cidade.estado.nome;
-              this.inq.enderecos[i].cidade.estado.sigla = res.cidade.estado.sigla;
-              this.inq.enderecos[i].cidade.id = res.cidade.id;
-              this.inq.enderecos[i].cidade.nome = res.cidade.nome;
-              this.inq.enderecos[i].complemento = res.complemento;
-            }
-          }
-        }
+    if (OrderID){
+      this.dialog.open(EnderecoEditComponent, dialogConfig).afterClosed().subscribe(res => {
+        //console.log(res.data);
       })
     } else {
-      this.dialog.open(EnderecoCreateComponent, dialogConfig).afterClosed().subscribe( res => {
-        if (res){
-          console.log("retorno positivo!", res);
-          const novoEstado: EstadoBR = {
-            id: res.cidade.estado.idUf,
-            sigla: res.cidade.estado.sigla,
-            nome: res.cidade.estado.nomeUf
-          }
-          const novaCidade: Cidade = {
-            id: res.cidade.id,
-            nome: res.cidade.nome,
-            estado: novoEstado
-          }
-          const novoEndereco: Endereco = {
-            logradouro: res.logradouro,
-            numero: res.numero,
-            complemento: res.complemento,
-            bairro: res.bairro,
-            cep: res.cep,
-            tipoEndereco: res.tipoEndereco,
-            cidade: novaCidade,
-            inquilino: this.inq.id
-          };
-          this.inq.enderecos.push(novoEndereco)
-          console.log('Novo Endereço ', this.inq.enderecos);
-          this.ngOnInit();
-        }
+      this.dialog.open(EnderecoCreateComponent,dialogConfig).afterClosed().subscribe(res => {        
+        this.data.reg.enderecos.push(res.data);
+        this.ngOnInit();
       })
     }
-    
-    
   }
+  //  if (OrderID) {
+  //    this.dialog.open(EnderecoEditComponent, dialogConfig).afterClosed().subscribe( res => {
+  //   )}}        //this.dialog.open(EnderecoCreateComponent, dialogConfig).afterClosed().subscribe( res => {
+  //  }
+    //     if (res){
+    //       console.log("retorno positivo!", res);
+    //       const novoEstado: EstadoBR = {
+    //         id: res.cidade.estado.idUf,
+    //         sigla: res.cidade.estado.sigla,
+    //         nome: res.cidade.estado.nomeUf
+    //       }
+    //       const novaCidade: Cidade = {
+    //         id: res.cidade.id,
+    //         nome: res.cidade.nome,
+    //         estado: novoEstado
+    //       }
+    //       const novoEndereco: Endereco = {
+    //         logradouro: res.logradouro,
+    //         numero: res.numero,
+    //         complemento: res.complemento,
+    //         bairro: res.bairro,
+    //         cep: res.cep,
+    //         tipoEndereco: res.tipoEndereco,
+    //         cidade: novaCidade,
+    //         inquilino: this.inq.id
+    //       };
+    //       this.inq.enderecos.push(novoEndereco)
+    //       console.log('Novo Endereço ', this.inq.enderecos);
+    //       this.ngOnInit();
+    //     }
+    //  })
+    //}
+    
+    
+ 
   updateGrandTotal() {
     throw new Error('Method not implemented.');
   }

@@ -38,7 +38,7 @@
                 <a routerLink="create/{{element.id}}">
                   <i class="material-icons edit">edit</i>
                 </a>
-                <a routerLink="delete/{{element.id}}">
+                <a (click)="excluiInquilino(element.id, element.nome)">
                   <i class="material-icons delete">delete</i>
                 </a>
               </td>

@@ -23,7 +23,7 @@
     "@auth0/angular-jwt": "^5.0.2",
     "cors": "^2.8.5",
     "moment": "^2.29.4",
-    "ngx-mask": "^14.0.3",
+    "ngx-mask": "^14.2.4",
     "ngx-toastr": "^15.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

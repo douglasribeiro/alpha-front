@@ -1,11 +1,11 @@
-<div class="container">
-
-  <h1>Endereços</h1>
-
 
   <button class="mat-elevation-z8" mat-stroked-button color="primary" (click)="AddOrEditOrderItem(null,null)">Novo Endereço</button>
-
+  
   <div class="mat-elevation-z8">
+    <div style="text-align: center; padding-top: 18px;">
+      <p>Nome do inquilino.: {{nomeInquilino}}</p>
+    </div>
+    
     <table mat-table [dataSource]="dataSource">
 
       <ng-container matColumnDef="id">
@@ -53,4 +53,3 @@
       aria-label="Select page of periodic elements">
     </mat-paginator>
   </div>
-</div>

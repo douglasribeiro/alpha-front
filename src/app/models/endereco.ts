@@ -1,5 +1,3 @@
-import { Cidade } from "./cidade";
-import { EstadoBR } from "./estadobr";
 import { Inquilino } from "./inquilino";
 import { TipoEndereco } from "./tipoEndereco";
 
@@ -12,5 +10,6 @@ export interface Endereco {
 	cep: string;
 	tipoEndereco: TipoEndereco;
 	inquilino: Inquilino;
-	cidade: Cidade;
+	cidade: string;
+	estado: string;
 }

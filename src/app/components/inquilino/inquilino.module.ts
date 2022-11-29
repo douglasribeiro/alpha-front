@@ -16,6 +16,8 @@ import { TelefoneEditComponent } from '../telefone/telefone-edit/telefone-edit.c
 import { TelefoneCreateComponent } from '../telefone/telefone-create/telefone-create.component';
 import { ReferenciaEditComponent } from '../referencia/referencia-edit/referencia-edit.component';
 import { ReferenciaCreateComponent } from '../referencia/referencia-create/referencia-create.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { InquilinoDeleteComponent } from './inquilino-delete/inquilino-delete.component';
 
 
 @NgModule({
@@ -32,13 +34,15 @@ import { ReferenciaCreateComponent } from '../referencia/referencia-create/refer
     TelefoneCreateComponent,
     ReferenciaEditComponent,
     ReferenciaCreateComponent,
+    InquilinoDeleteComponent,
   ],
   imports: [
     CommonModule,
     InquilinoRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxMaskModule.forRoot()
   ]
 })
 export class InquilinoModule { }

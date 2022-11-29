@@ -1,0 +1,17 @@
+<div style="height: 380p; width: 380px; padding: 10px; border: solid 3px;">
+    <div class="mat-elevation-z8" style="text-align: center;">
+        <h2>Confirma exclusão do registro?</h2>
+    </div>
+
+    <div style="text-align: center; padding-top: 18px;">
+        <p>Nome do inquilino.: {{mensaje}}</p>
+    </div>
+    <div class="fullWidth">
+        <button mat-button class="close-icon midWidth" (click)="salvar()">
+            <mat-icon>check_circle_outline</mat-icon>Exclui
+        </button>
+        <button mat-button class="close-icon midWidth" (click)="abort()">
+            <mat-icon>clear</mat-icon>Cancela
+        </button>
+    </div>
+</div>

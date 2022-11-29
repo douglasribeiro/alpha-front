@@ -2,3 +2,9 @@
 @import '../node_modules/ngx-toastr/toastr.css';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-dialog-container {
+    /* background-color: transparent !important; */
+    padding: 0px 0px 0px 0px !important;
+    overflow: hidden !important;
+}

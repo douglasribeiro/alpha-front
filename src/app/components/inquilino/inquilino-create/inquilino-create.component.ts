@@ -1,12 +1,14 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EstadoCivil } from 'src/app/models/estadoCivil';
 import { Inquilino } from 'src/app/models/inquilino';
 import { InquilinoService } from 'src/app/services/inquilino.service';
 import { DropdownService } from 'src/app/shared/services/dropdown.service';
+import { EnderecoListComponent } from '../../endereco/endereco-list/endereco-list.component';
 
 @Component({
   selector: 'app-inquilino-create',
@@ -65,7 +67,8 @@ export class InquilinoCreateComponent implements OnInit {
     private toast: ToastrService,
     private router: Router,
     private route: ActivatedRoute,
-    private dropDownService: DropdownService) { }
+    private dropDownService: DropdownService,
+    public dialog: MatDialog) { }
 
   
 
@@ -116,6 +119,7 @@ export class InquilinoCreateComponent implements OnInit {
 
   update(){
     this.service.update(this.inquilino).subscribe(resposta => {
+      console.log("Salvar ", this.inquilino);
       this.toast.success('Inquilino alterado com sucesso.', 'Cadastro')
       this.router.navigate(['inquilino'])
     }, ex => {
@@ -138,14 +142,17 @@ export class InquilinoCreateComponent implements OnInit {
   }
 
   dispAddress(): void {
-    if(this.address) {
-      this.address = false;
-    }
-    else {
-      this.address = true;
-      this.phone = false;
-      this.refer = false;
-    }
+    
+    const reg = this.inquilino;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.maxHeight = "80%";
+    dialogConfig.data = { reg };
+    this.dialog.open(EnderecoListComponent, dialogConfig).afterClosed().subscribe( res => {
+      
+    })
+    
   }
 
   dispPhone(): void {
@@ -168,6 +175,10 @@ export class InquilinoCreateComponent implements OnInit {
       this.address = false;
       this.phone = false;
     }
+  }
+
+  openDialog(): void {
+    
   }
 
 }

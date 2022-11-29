@@ -1,58 +1,63 @@
-<div>
-    <form class="form" [formGroup]="form">
+<div class="divForm">
+    <form class="form">
 
-        <h1>Excluir Endereço</h1>
-
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>CEP</mat-label>
-            <input name="cep" formControlName="cep" readonly="true" matInput>
-        </mat-form-field>
-
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>Tipo Endereço</mat-label>
-            <input name="tipoEndereco" formControlName="tipoEndereco" readonly="true" matInput>
-        </mat-form-field>
-
-        <div formGroupName="cidade">
-            <div formGroupName="estado">
-                <mat-form-field class="fullWidth" appearance="legacy">
-                    <mat-label>Estado</mat-label>
-                    <input name="nomeUf" formControlName="nomeUf" readonly="true" matInput>
-                </mat-form-field>
-            </div>
-            <mat-form-field class="fullWidth" appearance="legacy">
-                <mat-label>Cidade</mat-label>
-                <input name="nome" formControlName="nome" readonly="true" matInput>
-            </mat-form-field>
-        </div>
-    
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>Logradouro</mat-label>
-            <input name="nome" formControlName="logradouro" readonly="true" matInput>
-        </mat-form-field>
+        <h1>Exclui Endereço</h1>
 
         <div class="fullWidth">
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>CEP</mat-label>
+                <input [(ngModel)]="endereco.cep" [formControl]="cep" readonly="true" required matInput
+                    placeholder="Ex. 01111-000" mask="00.000-000">
+            </mat-form-field>
+
+        
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>Tipo Endereço</mat-label>
+                <input [(ngModel)]="endereco.tipoEndereco"  [formControl]="tipoEndereco" readonly="true" matInput>
+            </mat-form-field>
+        </div>
+            
+        <mat-form-field class="oneFourWidth" appearance="legacy">
+            <mat-label>Logradouro</mat-label>
+            <input [ngModel]="endereco.logradouro" [formControl]="logradouro" readonly="true" matInput
+                placeholder="Ex. Logradouro">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
         <mat-form-field class="treeWidth"  appearance="legacy">
             <mat-label>Numero</mat-label>
-            <input name="numero" formControlName="numero" readonly="true" matInput>
+            <input [(ngModel)]="endereco.numero" [formControl]="numero" matInput readonly="true"
+                placeholder="Ex. Numero">
+        </mat-form-field>
+    
+        <mat-form-field class="midWidth" appearance="legacy">
+            <mat-label>Bairro</mat-label>
+            <input [(ngModel)]="endereco.bairro" [formControl]="bairro" readonly="true" matInput
+                placeholder="Ex. Bairro">
+        </mat-form-field> 
+
+        <mat-form-field class="midWidth" appearance="legacy">
+            <mat-label>Complemento</mat-label>
+            <input [(ngModel)]="endereco.complemento" [formControl]="complemento" matInput
+                placeholder="Ex. Complemento">
         </mat-form-field>
 
         <mat-form-field class="oneFourWidth" appearance="legacy">
-            <mat-label>Bairro</mat-label>
-            <input name="nome" formControlName="bairro" readonly="true" matInput>
+            <mat-label>Cidade</mat-label>
+            <input [(ngModel)]="endereco.cidade" [formControl]="cidade" readonly="true" matInput
+            placeholder="Ex. Cidade">
         </mat-form-field>
-        </div>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>Complemento</mat-label>
-            <input name="nome" formControlName="complemento" readonly="true" matInput>
+        <mat-form-field class="treeWidth" appearance="legacy">
+            <mat-label>Estado</mat-label>
+            <input [(ngModel)]="endereco.estado" [formControl]="estado" readonly="true" matInput
+            placeholder="Ex. Estado">
         </mat-form-field>
 
         <div class="fullWidth">
             <button mat-button class="close-icon midWidth" (click)="saida()">
                 <mat-icon>delete_sweep</mat-icon>Exclui
             </button>
-            <button mat-button class="close-icon" (click)="abort()">
+            <button mat-button class="close-icon midWidth" (click)="abort()">
                 <mat-icon>clear</mat-icon>Cancela
             </button>
         </div>
