@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EstadoCivil } from 'src/app/models/estadoCivil';
 import { Telefone } from '../telefone';
 
 @Component({
@@ -13,6 +14,18 @@ export class TelefoneEditComponent implements OnInit {
   form: FormGroup;
   telefone: Telefone;
 
+  tipoTelefones: EstadoCivil[] = [
+    {value: "PESSOAL", viewValue: "Pessoal"},
+    {value: "RECADO", viewValue: "Recado"},
+    {value: "RESIDENCIAL", viewValue: "Residencial"},
+    {value: "COMERCIAL", viewValue: "Comercial"},
+    {value: "OUTROS", viewValue: "Outros"}
+  ]
+
+  ddd:    FormControl = new FormControl(null);
+  mumero: FormControl = new FormControl(null);
+  tipo: FormControl = new FormControl(null);
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
     public dialogRef: MatDialogRef<TelefoneEditComponent>,
@@ -21,16 +34,11 @@ export class TelefoneEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.telefone = this.data.OrderID;
-    this.form = this.formBuilder.group({
-      id:     [this.telefone.id],
-      ddd:    [this.telefone.ddd],
-      numero: [this.telefone.numero]
-    })
   }
 
   saida(){
     console.log('this.form', this.form)
-    this.dialogRef.close(this.form.value);    
+    this.dialogRef.close({data: this.telefone}); 
   }
 
   abort(){

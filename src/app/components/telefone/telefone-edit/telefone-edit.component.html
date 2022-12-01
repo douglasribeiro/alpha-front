@@ -1,26 +1,38 @@
-
-<div>
-    <form class="form" [formGroup]="form">
-
+<div class="divForm">
+    <form class="form">
         <h1>Telefones</h1>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>ddd</mat-label>
-            <input name="ddd" formControlName="ddd" required matInput
-                placeholder="Ex.11">
-        </mat-form-field>
+        <div class="fullWidth">
+            <mat-form-field class="treeWidth" appearance="legacy">
+                <mat-label>ddd</mat-label>
+                <input [(ngModel)]="telefone.ddd" [formControl]="ddd" required matInput
+                    placeholder="Ex.11">
+            </mat-form-field>
+    
+            <mat-form-field class="treeWidth" appearance="legacy">
+                <mat-label>numero</mat-label>
+                <input [(ngModel)]="telefone.numero" [formControl]="mumero" required matInput
+                    placeholder="Ex.123-456">
+            </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>numero</mat-label>
-            <input name="numero" formControlName="numero" required matInput
-                placeholder="Ex.123-456">
-        </mat-form-field>
+            <mat-form-field class="treeWidth" appearance="legacy">
+                <mat-label>Tipo Telefone</mat-label>
+                <mat-select  [(ngModel)]="telefone.tipo"  [formControl]="tipo">
+                    <mat-option *ngFor="let te of tipoTelefones" [value]="te.value">
+                        {{te.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+        </div>
 
-        <button mat-button class="close-icon" (click)="saida()">
-            <mat-icon>check_circle_outline</mat-icon>Salva
-        </button>
-        <button mat-button class="close-icon" (click)="abort()">
-            <mat-icon>clear</mat-icon>Cancela
-        </button>
+        <div class="fullWidth">
+            <button mat-button class="close-icon midWidth" (click)="saida()">
+                <mat-icon>check_circle_outline</mat-icon>Salva
+            </button>
+            <button mat-button class="close-icon midWidth" (click)="abort()">
+                <mat-icon>clear</mat-icon>Cancela
+            </button>
+        </div>
     </form>
 </div>

@@ -54,7 +54,7 @@ export class EnderecoCreateComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.data);
+    
   }
 
   salva(){

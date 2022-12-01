@@ -9,6 +9,7 @@ import { Inquilino } from 'src/app/models/inquilino';
 import { InquilinoService } from 'src/app/services/inquilino.service';
 import { DropdownService } from 'src/app/shared/services/dropdown.service';
 import { EnderecoListComponent } from '../../endereco/endereco-list/endereco-list.component';
+import { TelefoneListComponent } from '../../telefone/telefone-list/telefone-list.component';
 
 @Component({
   selector: 'app-inquilino-create',
@@ -90,6 +91,7 @@ export class InquilinoCreateComponent implements OnInit {
 
   findById() :void{
     this.service.findbyId(this.inquilino.id).subscribe(resposta => {
+      console.log("Resposta: ", resposta);
       this.inquilino = resposta;
     });
   }
@@ -156,15 +158,14 @@ export class InquilinoCreateComponent implements OnInit {
   }
 
   dispPhone(): void {
-    if(this.phone) {
-      this.phone = false;
-    }
-    else {
-      this.phone = true;
-      this.address = false;
-      this.refer = false;
-    }
-    
+    const reg = this.inquilino;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.maxHeight = "50%";
+    dialogConfig.data = { reg };
+    this.dialog.open(TelefoneListComponent, dialogConfig).afterClosed().subscribe( res => {
+    })    
   }
 
   dispRefer(): void {

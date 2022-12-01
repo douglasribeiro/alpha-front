@@ -16,6 +16,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from './shared/shared.module';
+import { TelefoneDeleteComponent } from './components/telefone/telefone-delete/telefone-delete.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SharedModule } from './shared/shared.module';
     HomeComponent,
     HeaderComponent,
     TecnicoListComponent,
-    LoginComponent,    
+    LoginComponent,
+    TelefoneDeleteComponent,    
   ],
   imports: [
     BrowserModule,

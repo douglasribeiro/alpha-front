@@ -1,34 +1,31 @@
 <div class="divForm">
     <form class="form">
-        <h1>Telefones</h1>
+
+        <h1>Exclui Telefone</h1>
 
         <div class="fullWidth">
             <mat-form-field class="treeWidth" appearance="legacy">
                 <mat-label>ddd</mat-label>
-                <input [(ngModel)]="telefone.ddd" [formControl]="ddd" required matInput
+                <input [(ngModel)]="telefone.ddd" [formControl]="ddd" readonly="true" required matInput
                     placeholder="Ex.11">
             </mat-form-field>
     
             <mat-form-field class="treeWidth" appearance="legacy">
                 <mat-label>numero</mat-label>
-                <input [(ngModel)]="telefone.numero" [formControl]="mumero" required matInput
+                <input [(ngModel)]="telefone.numero" [formControl]="numero" readonly="true" required matInput
                     placeholder="Ex.123-456">
             </mat-form-field>
 
             <mat-form-field class="treeWidth" appearance="legacy">
-                <mat-label>Tipo Telefone</mat-label>
-                <mat-select  [(ngModel)]="telefone.tipo"  [formControl]="tipo">
-                    <mat-option *ngFor="let te of tipoTelefones" [value]="te.value">
-                        {{te.viewValue}}
-                    </mat-option>
-                </mat-select>
+                <mat-label>Tipo Endereço</mat-label>
+                <input [(ngModel)]="telefone.tipo"  [formControl]="tipo" readonly="true" matInput>
             </mat-form-field>
     
         </div>
 
         <div class="fullWidth">
             <button mat-button class="close-icon midWidth" (click)="saida()">
-                <mat-icon>check_circle_outline</mat-icon>Salva
+                <mat-icon>delete_sweep</mat-icon>Exclui
             </button>
             <button mat-button class="close-icon midWidth" (click)="abort()">
                 <mat-icon>clear</mat-icon>Cancela

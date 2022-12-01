@@ -65,7 +65,7 @@ export class EnderecoListComponent implements OnInit {
         //console.log(res.data);
       })
     } else {
-      this.dialog.open(EnderecoCreateComponent,dialogConfig).afterClosed().subscribe(res => {        
+      this.dialog.open(EnderecoCreateComponent,dialogConfig).afterClosed().subscribe(res => {       
         this.data.reg.enderecos.push(res.data);
         this.ngOnInit();
       })
