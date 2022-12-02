@@ -1,38 +1,45 @@
-<div>
-    <form class="form" [formGroup]="form">
+<div class="divForm">
+
+    <form class="form">
 
         <h1>Referências</h1>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>Nome</mat-label>
-            <input name="nome" formControlName="nome" required matInput>
-        </mat-form-field>
+        <div class="fullWidth">
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>Nome</mat-label>
+                <input [(ngModel)]="referencia2.nome" [formControl]="nome" required matInput>
+            </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>E-mail</mat-label>
-            <input name="email" formControlName="email" required matInput>
-        </mat-form-field>
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>E-mail</mat-label>
+                <input [(ngModel)]="referencia2.email" [formControl]="email" required matInput>
+            </mat-form-field>
+        </div>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>Telefone 1</mat-label>
-            <input name="phone01" formControlName="phone01" required matInput>
-        </mat-form-field>
+        <div class="fullWidth">
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>Telefone 1</mat-label>
+                <input [(ngModel)]="referencia2.phone01" [formControl]="phone01" required matInput>
+            </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
-            <mat-label>Telefone 2</mat-label>
-            <input name="phone02" formControlName="phone02" required matInput>
-        </mat-form-field>
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>Telefone 2</mat-label>
+                <input [(ngModel)]="referencia2.phone02" [formControl]="phone02" required matInput>
+            </mat-form-field>
+        </div>
 
         <mat-form-field class="fullWidth" appearance="legacy">
             <mat-label>Observação</mat-label>
-            <input type="text" name="observacao" formControlName="observacao" required matInput>
+            <input type="text" [(ngModel)]="referencia2.observacao" [formControl]="observacao" required matInput>
         </mat-form-field>
 
-        <button mat-button class="close-icon" (click)="saida()">
-            <mat-icon>check_circle_outline</mat-icon>Salva
-        </button>
-        <button mat-button class="close-icon" (click)="abort()">
-            <mat-icon>clear</mat-icon>Cancela
-        </button>
+        <div class="fullWidth">
+            <button mat-button class="close-icon pointer midWidth" (click)="saida()">
+                <mat-icon>check_circle_outline</mat-icon>Salva
+            </button>
+            <button mat-button class="close-icon pointer midWidth" (click)="abort()">
+                <mat-icon>clear</mat-icon>Cancela
+            </button>
+        </div>
     </form>
 </div>

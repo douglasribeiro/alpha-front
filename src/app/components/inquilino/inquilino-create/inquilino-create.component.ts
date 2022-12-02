@@ -9,6 +9,7 @@ import { Inquilino } from 'src/app/models/inquilino';
 import { InquilinoService } from 'src/app/services/inquilino.service';
 import { DropdownService } from 'src/app/shared/services/dropdown.service';
 import { EnderecoListComponent } from '../../endereco/endereco-list/endereco-list.component';
+import { ReferenciaListComponent } from '../../referencia/referencia-list/referencia-list.component';
 import { TelefoneListComponent } from '../../telefone/telefone-list/telefone-list.component';
 
 @Component({
@@ -91,7 +92,7 @@ export class InquilinoCreateComponent implements OnInit {
 
   findById() :void{
     this.service.findbyId(this.inquilino.id).subscribe(resposta => {
-      console.log("Resposta: ", resposta);
+      //console.log("Resposta: ", resposta);
       this.inquilino = resposta;
     });
   }
@@ -121,7 +122,7 @@ export class InquilinoCreateComponent implements OnInit {
 
   update(){
     this.service.update(this.inquilino).subscribe(resposta => {
-      console.log("Salvar ", this.inquilino);
+      //console.log("Salvar ", this.inquilino);
       this.toast.success('Inquilino alterado com sucesso.', 'Cadastro')
       this.router.navigate(['inquilino'])
     }, ex => {
@@ -169,13 +170,15 @@ export class InquilinoCreateComponent implements OnInit {
   }
 
   dispRefer(): void {
-    if(this.refer){
-      this.refer = false;
-    }else{
-      this.refer = true;
-      this.address = false;
-      this.phone = false;
-    }
+    const reg = this.inquilino;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    dialogConfig.maxHeight = "70%";
+    dialogConfig.data = { reg };
+    this.dialog.open(ReferenciaListComponent, dialogConfig).afterClosed().subscribe( res => {
+      //console.log("Retorno ", res);
+    }) 
   }
 
   openDialog(): void {

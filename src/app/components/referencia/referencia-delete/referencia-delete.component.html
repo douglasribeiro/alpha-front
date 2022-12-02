@@ -7,35 +7,35 @@
         <div class="fullWidth">
             <mat-form-field class="midWidth" appearance="legacy">
                 <mat-label>Nome</mat-label>
-                <input [(ngModel)]="referencia.nome" [formControl]="nome" required matInput>
+                <input [(ngModel)]="referencia.nome" [formControl]="nome" readonly="true" required matInput>
             </mat-form-field>
 
             <mat-form-field class="midWidth" appearance="legacy">
                 <mat-label>E-mail</mat-label>
-                <input [(ngModel)]="referencia.email" [formControl]="email" required matInput>
+                <input [(ngModel)]="referencia.email" [formControl]="email" readonly="true" required matInput>
             </mat-form-field>
         </div>
 
         <div class="fullWidth">
             <mat-form-field class="midWidth" appearance="legacy">
                 <mat-label>Telefone 1</mat-label>
-                <input [(ngModel)]="referencia.phone01" [formControl]="phone01" required matInput>
+                <input [(ngModel)]="referencia.phone01" [formControl]="phone01" readonly="true" required matInput>
             </mat-form-field>
 
             <mat-form-field class="midWidth" appearance="legacy">
                 <mat-label>Telefone 2</mat-label>
-                <input [(ngModel)]="referencia.phone02" [formControl]="phone02" required matInput>
+                <input [(ngModel)]="referencia.phone02" [formControl]="phone02" readonly="true" required matInput>
             </mat-form-field>
         </div>
 
         <mat-form-field class="fullWidth" appearance="legacy">
             <mat-label>Observação</mat-label>
-            <input type="text" [(ngModel)]="referencia.observacao" [formControl]="observacao" required matInput>
+            <input type="text" [(ngModel)]="referencia.observacao" [formControl]="observacao" readonly="true" required matInput>
         </mat-form-field>
 
         <div class="fullWidth">
             <button mat-button class="close-icon pointer midWidth" (click)="saida()">
-                <mat-icon>check_circle_outline</mat-icon>Salva
+                <mat-icon>check_circle_outline</mat-icon>Exclui
             </button>
             <button mat-button class="close-icon pointer midWidth" (click)="abort()">
                 <mat-icon>clear</mat-icon>Cancela

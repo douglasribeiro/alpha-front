@@ -1,57 +1,54 @@
-<div class="container">
+<button class="mat-elevation-z8" mat-stroked-button color="primary" (click)="AddOrEditOrderItem(null,null)">Nova
+  Referencia</button>
+<div class="mat-elevation-z8">
 
-    <h1>Referencias</h1>
-  
-  
-    <button class="mat-elevation-z8" mat-stroked-button color="primary" (click)="AddOrEditOrderItem(null,null)">Nova Referencia</button>
-  
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
-  
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> Id </th>
-          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="nome">
-          <th mat-header-cell *matHeaderCellDef> nome </th>
-          <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef> E-mail </th>
-          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="phone01">
-          <th mat-header-cell *matHeaderCellDef> Telefone 1 </th>
-          <td mat-cell *matCellDef="let element"> {{element.phone01}} </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="phone02">
-          <th mat-header-cell *matHeaderCellDef> Telefone 2 </th>
-          <td mat-cell *matCellDef="let element"> {{element.phone02}} </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="acoes">
-          <th mat-header-cell *matHeaderCellDef> Açoes </th>
-          <td mat-cell *matCellDef="let element">
-            <a (click)="AddOrEditOrderItem(null,element)">
-              <i class="material-icons edit">edit</i>
-            </a>
-            <a >
-              <i class="material-icons delete">delete</i>
-            </a>
-          </td>
-        </ng-container>
-  
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-  
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
-        aria-label="Select page of periodic elements">
-      </mat-paginator>
-    </div>
+  <div style="text-align: center; padding-top: 18px;">
+    <p>Nome do inquilino.: {{nomeInquilino}}</p>
   </div>
-  
+
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> nome </th>
+      <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> E-mail </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone01">
+      <th mat-header-cell *matHeaderCellDef> Telefone 1 </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone01}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone02">
+      <th mat-header-cell *matHeaderCellDef> Telefone 2 </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone02}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef> Açoes </th>
+      <td mat-cell *matCellDef="let element">
+        <a (click)="AddOrEditOrderItem(null,element)">
+          <i class="material-icons edit">edit</i>
+        </a>
+        <a>
+          <i class="material-icons delete" (click)="excluiReferencia(null,element)">delete</i>
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>

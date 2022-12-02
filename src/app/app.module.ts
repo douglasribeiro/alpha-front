@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from './shared/shared.module';
 import { TelefoneDeleteComponent } from './components/telefone/telefone-delete/telefone-delete.component';
+import { ReferenciaDeleteComponent } from './components/referencia/referencia-delete/referencia-delete.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TelefoneDeleteComponent } from './components/telefone/telefone-delete/t
     HeaderComponent,
     TecnicoListComponent,
     LoginComponent,
-    TelefoneDeleteComponent,    
+    TelefoneDeleteComponent,
+    ReferenciaDeleteComponent,    
   ],
   imports: [
     BrowserModule,
