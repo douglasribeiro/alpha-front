@@ -17,6 +17,8 @@ const routes: Routes = [
     .then(m => m.AdminModule)},
     {path: 'inquilino', loadChildren: () => import('./components/inquilino/inquilino.module')
     .then(m => m.InquilinoModule)},
+    {path: 'imovel', loadChildren: () => import('./components/imovel/imovel.module')
+    .then(m => m.ImovelModule)}
   ]}
 ];
 

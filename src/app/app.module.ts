@@ -28,18 +28,18 @@ import { ReferenciaDeleteComponent } from './components/referencia/referencia-de
     TecnicoListComponent,
     LoginComponent,
     TelefoneDeleteComponent,
-    ReferenciaDeleteComponent,    
+    ReferenciaDeleteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    
+
   ],
   providers: [AuthInterceptorProvider,
   MatDatepickerModule, {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
