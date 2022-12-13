@@ -1,10 +1,10 @@
+import { BaseEnum } from './../../../models/baseEnum';
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { EstadoCivil } from 'src/app/models/estadoCivil';
 import { Inquilino } from 'src/app/models/inquilino';
 import { InquilinoService } from 'src/app/services/inquilino.service';
 import { DropdownService } from 'src/app/shared/services/dropdown.service';
@@ -27,7 +27,7 @@ export class InquilinoCreateComponent implements OnInit {
   selectedValue: string;
   pessoasOp: any[];
 
-  estCivis: EstadoCivil[] = [
+  estCivis: BaseEnum[] = [
     {value: 'SOLTEIRO', viewValue: 'Solteiro'},
     {value: 'CASADO', viewValue: 'Casado'},
     {value: 'AMAZIADO', viewValue: 'Amaziado'},
@@ -63,7 +63,7 @@ export class InquilinoCreateComponent implements OnInit {
   nacional:     FormControl = new FormControl(null);
   naturalidade: FormControl = new FormControl(null);
   pessoa:       FormControl = new FormControl(null);
-  
+
   constructor(
     private service: InquilinoService,
     private toast: ToastrService,
@@ -72,7 +72,7 @@ export class InquilinoCreateComponent implements OnInit {
     private dropDownService: DropdownService,
     public dialog: MatDialog) { }
 
-  
+
 
   ngOnInit(): void {
     this.pessoasOp = this.dropDownService.getPessoas();
@@ -101,7 +101,7 @@ export class InquilinoCreateComponent implements OnInit {
     return this.nome.valid && this.cpfcnpj.valid && this.email.valid;
   }
 
-  create() {  
+  create() {
     if(!this.novo) {
       this.update()
     } else {
@@ -135,7 +135,7 @@ export class InquilinoCreateComponent implements OnInit {
       }
     })
   }
-  
+
   addPerfil(perfil: any): void {
     //if(this..perfis.includes(perfil)) {
     //  this.tecnico.perfis.splice(this.tecnico.perfis.indexOf(perfil), 1);
@@ -145,7 +145,7 @@ export class InquilinoCreateComponent implements OnInit {
   }
 
   dispAddress(): void {
-    
+
     const reg = this.inquilino;
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
@@ -153,9 +153,9 @@ export class InquilinoCreateComponent implements OnInit {
     dialogConfig.maxHeight = "80%";
     dialogConfig.data = { reg };
     this.dialog.open(EnderecoListComponent, dialogConfig).afterClosed().subscribe( res => {
-      
+
     })
-    
+
   }
 
   dispPhone(): void {
@@ -166,7 +166,7 @@ export class InquilinoCreateComponent implements OnInit {
     dialogConfig.maxHeight = "50%";
     dialogConfig.data = { reg };
     this.dialog.open(TelefoneListComponent, dialogConfig).afterClosed().subscribe( res => {
-    })    
+    })
   }
 
   dispRefer(): void {
@@ -178,11 +178,11 @@ export class InquilinoCreateComponent implements OnInit {
     dialogConfig.data = { reg };
     this.dialog.open(ReferenciaListComponent, dialogConfig).afterClosed().subscribe( res => {
       //console.log("Retorno ", res);
-    }) 
+    })
   }
 
   openDialog(): void {
-    
+
   }
 
 }

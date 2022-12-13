@@ -13,7 +13,7 @@ export class InquilinoService {
   constructor(private htpp: HttpClient) { }
 
   findbyId(id: any): Observable<Inquilino> {
-    return this.htpp.get<Inquilino>(`${API_CONFIG.baseUrl}/inquilino/${id}`) 
+    return this.htpp.get<Inquilino>(`${API_CONFIG.baseUrl}/inquilino/${id}`)
   }
 
   findAll(): Observable<Inquilino[]> {
@@ -25,14 +25,11 @@ export class InquilinoService {
   }
 
   update(inquilino: Inquilino): Observable<Inquilino> {
-    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXX", inquilino);
     return this.htpp.patch<Inquilino>(`${API_CONFIG.baseUrl}/inquilino/${inquilino.id}`, inquilino);
   }
 
   exclui(id: any): Observable<Inquilino> {
-    console.log("Delete.: ", id);
-    console.log(`${API_CONFIG.baseUrl}/inquilino/${id}`)
-    return this.htpp.delete<Inquilino>(`${API_CONFIG.baseUrl}/inquilino/${id}`) 
+    return this.htpp.delete<Inquilino>(`${API_CONFIG.baseUrl}/inquilino/${id}`)
   }
 
   buscaCep(cep: string): Observable<Cep>{

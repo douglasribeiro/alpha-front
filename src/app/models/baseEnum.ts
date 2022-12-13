@@ -1,4 +1,4 @@
-export interface EstadoCivil{
+export interface BaseEnum{
     value: string;
     viewValue: string;
 }

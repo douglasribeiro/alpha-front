@@ -5,10 +5,12 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgxMaskModule } from "ngx-mask";
 import { SharedModule } from "src/app/shared/shared.module";
+import { ImovelCreateComponent } from './imovel-create/imovel-create.component';
 
 @NgModule({
   declarations:[
-    ImovelListComponent
+    ImovelListComponent,
+    ImovelCreateComponent
   ],
   imports: [
     CommonModule,

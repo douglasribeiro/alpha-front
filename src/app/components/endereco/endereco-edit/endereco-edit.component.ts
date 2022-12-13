@@ -1,8 +1,8 @@
+import { BaseEnum } from './../../../models/baseEnum';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Endereco } from 'src/app/models/endereco';
-import { EstadoCivil } from 'src/app/models/estadoCivil';
 import { InquilinoService } from 'src/app/services/inquilino.service';
 import { TransitorioService } from 'src/app/services/transitorio.service';
 
@@ -15,8 +15,8 @@ export class EnderecoEditComponent implements OnInit {
 
   endereco: Endereco;
   idCidadeAnt: any;
- 
-  tipoEnderecos: EstadoCivil[] = [
+
+  tipoEnderecos: BaseEnum[] = [
     {value: "RESIDENCIAL", viewValue: "Residencial"},
     {value: "COMERCIAL", viewValue: "Comercial"},
     {value: "COBRANÇA", viewValue: "Cobrança"},
@@ -35,7 +35,7 @@ export class EnderecoEditComponent implements OnInit {
 	inquilino:    FormControl = new FormControl(null);
 	cidade:       FormControl = new FormControl(null);
   estado:       FormControl = new FormControl(null);
-  
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
     public transitorio: TransitorioService,
@@ -53,7 +53,7 @@ export class EnderecoEditComponent implements OnInit {
 
   salvar(){
     console.log(this.endereco);
-    this.dialogRef.close({data: this.endereco}); 
+    this.dialogRef.close({data: this.endereco});
   }
 
   verCep(){

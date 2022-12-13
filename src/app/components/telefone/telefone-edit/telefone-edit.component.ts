@@ -1,7 +1,7 @@
+import { BaseEnum } from './../../../models/baseEnum';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { EstadoCivil } from 'src/app/models/estadoCivil';
 import { Telefone } from '../telefone';
 
 @Component({
@@ -14,7 +14,7 @@ export class TelefoneEditComponent implements OnInit {
   form: FormGroup;
   telefone: Telefone;
 
-  tipoTelefones: EstadoCivil[] = [
+  tipoTelefones: BaseEnum[] = [
     {value: "PESSOAL", viewValue: "Pessoal"},
     {value: "RECADO", viewValue: "Recado"},
     {value: "RESIDENCIAL", viewValue: "Residencial"},
@@ -38,7 +38,7 @@ export class TelefoneEditComponent implements OnInit {
 
   saida(){
     console.log('this.form', this.form)
-    this.dialogRef.close({data: this.telefone}); 
+    this.dialogRef.close({data: this.telefone});
   }
 
   abort(){
