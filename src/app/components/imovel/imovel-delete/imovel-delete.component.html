@@ -1,0 +1,201 @@
+<div class="container fullWidth">
+  <mat-tab-group>
+    <mat-tab label="Imóvel" class="container">
+      <br />
+
+      <div style="padding-right: 10px">
+        <mat-form-field appearance="legacy" class="treeWidth">
+          <mat-label>Tipo de Imovel</mat-label>
+          <input [(ngModel)]="imovel.tipo" matInput readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" class="treeWidth">
+          <mat-label>Tipo de Serviço</mat-label>
+          <input [(ngModel)]="imovel.servico" matInput readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" class="treeWidth">
+          <mat-label>Tipo de Edificação</mat-label>
+          <input [(ngModel)]="imovel.edificacao" matInput readonly="true" />
+        </mat-form-field>
+      </div>
+
+      <div style="padding-right: 10px">
+        <mat-form-field class="treeWidth" appearance="legacy">
+          <mat-label>Matricula</mat-label>
+          <input [(ngModel)]="imovel.matricula" matInput readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field class="treeWidth">
+          <mat-label>Condominio</mat-label>
+          <input [(ngModel)]="imovel.condominio" matInput readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field class="treeWidth" appearance="legacy">
+          <mat-label>Complemento</mat-label>
+          <input [(ngModel)]="imovel.complementoImovel" matInput readonly="true" />
+        </mat-form-field>
+      </div>
+
+      <div style="padding-right: 10px">
+        <mat-form-field class="treeWidth" appearance="legacy">
+          <mat-label>Area Total M²</mat-label>
+          <input [(ngModel)]="imovel.areaTotal" matInput readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field class="treeWidth" appearance="legacy">
+          <mat-label>Area Construida M²</mat-label>
+          <input [(ngModel)]="imovel.areaConstruida" matInput readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field class="treeWidth" appearance="legacy">
+          <mat-label>Comodos</mat-label>
+          <input [(ngModel)]="imovel.comodos" matInput readonly="true" />
+        </mat-form-field>
+      </div>
+
+      <div style="padding-right: 10px">
+        <mat-form-field appearance="legacy" class="fourWidth">
+          <mat-label>Banheiros</mat-label>
+          <input [(ngModel)]="imovel.banheiros" matInput readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" class="fourWidth">
+          <mat-label>Quartos</mat-label>
+          <input [(ngModel)]="imovel.quartos" matInput readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" class="fourWidth">
+          <mat-label>Suites</mat-label>
+          <input [(ngModel)]="imovel.suites" matInput readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" class="fourWidth">
+          <mat-label>Vagas Garagem</mat-label>
+          <input [(ngModel)]="imovel.vagas" matInput readonly="true" />
+        </mat-form-field>
+      </div>
+
+      <div style="padding-right: 10px">
+        <mat-form-field appearance="legacy" class="midWidth">
+          <mat-label>Obervações</mat-label>
+          <input [(ngModel)]="imovel.observacao" matInput readonly="true" />
+        </mat-form-field>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Endereço">
+      <br />
+      <div style="padding-right: 10px">
+        <mat-form-field appearance="legacy" class="treeWidth">
+          <mat-label>C.E.P.</mat-label>
+          <input [(ngModel)]="imovel.cep" matInput readonly="true" />
+        </mat-form-field>
+      </div>
+      <div style="padding-right: 10px">
+        <mat-form-field class="midWidth" appearance="legacy">
+          <mat-label>Logradouro</mat-label>
+          <input [(ngModel)]="imovel.logradouro" readonly="true" matInput />
+        </mat-form-field>
+
+        <mat-form-field class="fiveWidth" appearance="legacy">
+          <mat-label>Numero</mat-label>
+          <input [(ngModel)]="imovel.numero" matInput readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field class="treeWidth" appearance="legacy">
+          <mat-label>Bairro</mat-label>
+          <input [(ngModel)]="imovel.bairro" readonly="true" matInput readonly="true" />
+        </mat-form-field>
+      </div>
+
+      <div style="padding-right: 10px">
+        <mat-form-field class="midWidth" appearance="legacy">
+          <mat-label>Complemento</mat-label>
+          <input [(ngModel)]="imovel.complementoEndereco" matInput readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field class="treeWidth" appearance="legacy">
+          <mat-label>Cidade</mat-label>
+          <input [(ngModel)]="imovel.cidade" readonly="true" matInput />
+        </mat-form-field>
+
+        <mat-form-field class="fiveWidth" appearance="legacy">
+          <mat-label>Estado</mat-label>
+          <input [(ngModel)]="imovel.estado" readonly="true" matInput />
+        </mat-form-field>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Proprietario">
+      <br />
+      <div style="padding-right: 10px">
+        <mat-form-field class="midWidth" appearance="legacy">
+          <mat-label>Id</mat-label>
+          <input [(ngModel)]="imovel.proprietario.id" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="midWidth" appearance="legacy">
+          <mat-label>Pessoa</mat-label>
+          <input [(ngModel)]="imovel.proprietario.pessoa" matInput>
+        </mat-form-field>
+
+      </div>
+
+      <mat-form-field class="midWidth" appearance="legacy">
+        <mat-label>Nome</mat-label>
+        <input [(ngModel)]="imovel.proprietario.nome" readonly="true" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="midWidth" appearance="legacy">
+        <mat-label>E-mail</mat-label>
+        <input [(ngModel)]="imovel.proprietario.email" readonly="true" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="midWidth" appearance="legacy">
+        <mat-label>R.G./Inscrição</mat-label>
+        <input [(ngModel)]="imovel.proprietario.identinscr" readonly="true" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="midWidth" appearance="legacy">
+        <mat-label>CPF/CNPJ</mat-label>
+        <input [(ngModel)]="imovel.proprietario.cpfcnpj" readonly="true" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="midWidth" appearance="legacy">
+        <mat-label>Data Nascimento</mat-label>
+        <input matInput [(ngModel)]="imovel.proprietario.dtNiver">
+      </mat-form-field>
+
+      <mat-form-field class="midWidth" appearance="legacy">
+        <mat-label>Estado Civil</mat-label>
+        <input [(ngModel)]="imovel.proprietario.estCivil" readonly="true" matInput />
+      </mat-form-field>
+
+      <div style="padding-right: 10px">
+        <mat-form-field class="treeWidth" appearance="legacy">
+          <mat-label>Naturalidade</mat-label>
+          <input [(ngModel)]="imovel.proprietario.naturalidade" readonly="true" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="treeWidth" appearance="legacy">
+          <mat-label>Nacionalidade</mat-label>
+          <input [(ngModel)]="imovel.proprietario.nacional" readonly="true" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="treeWidth" appearance="legacy">
+          <mat-label>Sexo</mat-label>
+          <input [(ngModel)]="imovel.proprietario.sexo" readonly="true" matInput>
+        </mat-form-field>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <div class="fullWidth">
+    <button mat-button class="close-icon midWidth" (click)="salvar()">
+      <mat-icon>check_circle_outline</mat-icon>Exclui
+    </button>
+    <button mat-button class="close-icon midWidth" (click)="abort()">
+      <mat-icon>clear</mat-icon>Cancela
+    </button>
+  </div>
+</div>

@@ -13,8 +13,8 @@ export class DropdownService {
 
   getSimNao(){
     return [
-      {value: 1, viewValue: 'Sim'},
-      {value: 0, viewValue: 'Não'}
+      {value: "SIM", viewValue: 'Sim'},
+      {value: "NAO", viewValue: 'Não'}
     ]
   }
 

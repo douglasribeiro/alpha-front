@@ -1,31 +1,23 @@
-import { TipoEndereco } from './../../../models/tipoEndereco';
-import { ProprietarioService } from './../../../services/proprietario.service';
-import { Proprietario } from './../../../models/proprietario';
-import { InquilinoService } from './../../../services/inquilino.service';
-import { BaseEnum, } from '../../../models/baseEnum';
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Imovel } from 'src/app/models/imovel';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ImovelService } from 'src/app/services/imovel.service';
-import { DropdownService } from 'src/app/shared/services/dropdown.service';
 import { Endereco } from 'src/app/models/endereco';
-import { DatePipe } from '@angular/common';
-
-
-export interface ExampleTab {
-  label: string;
-  content: string;
-}
+import { Imovel } from 'src/app/models/imovel';
+import { Proprietario } from 'src/app/models/proprietario';
+import { ImovelService } from 'src/app/services/imovel.service';
+import { InquilinoService } from 'src/app/services/inquilino.service';
+import { ProprietarioService } from 'src/app/services/proprietario.service';
+import { DropdownService } from 'src/app/shared/services/dropdown.service';
 
 @Component({
-  selector: 'app-imovel-create',
-  templateUrl: './imovel-create.component.html',
-  styleUrls: ['./imovel-create.component.css']
+  selector: 'app-imovel-edit',
+  templateUrl: './imovel-edit.component.html',
+  styleUrls: ['./imovel-edit.component.css']
 })
-export class ImovelCreateComponent implements OnInit {
+export class ImovelEditComponent implements OnInit {
 
   novo: boolean = false;
   tpEdificacao: any[];
@@ -35,7 +27,6 @@ export class ImovelCreateComponent implements OnInit {
   formulario: boolean = true;
   pessoasOp: any[];
   estCivi: any[];
-
 
 proprietario: Proprietario = {
   nome: '',
@@ -100,6 +91,7 @@ proprietario: Proprietario = {
 	complementoEndereco: FormControl = new FormControl(null);
 	bairro:       FormControl = new FormControl(null);
 	cep:          FormControl = new FormControl(null);
+	tipoEndereco: FormControl = new FormControl(null);
 	inquilino:    FormControl = new FormControl(null);
 	cidade:       FormControl = new FormControl(null);
   estado:       FormControl = new FormControl(null);
@@ -147,10 +139,8 @@ proprietario: Proprietario = {
 
     findById() :void{
       this.service.findbyId(this.imovel.id).subscribe(resposta => {
-        console.log("resposta findBId ", resposta);
         this.imovel = resposta;
-        console.log("resposta imovel ", this.imovel);
-      });
+      });                                           //  proprietarios
     }
 
     verCep(){
@@ -206,12 +196,16 @@ proprietario: Proprietario = {
       this.proprietario.pessoa = prop.pessoa;
     }
 
-    create(){
-      this.service.save(this.imovel).subscribe(res => {
-        this.toast.success("Imovel salvo com sucesso. ");
+    update(){
+      console.log("Update ", this.imovel);
+      this.service.update(this.imovel.id, this.imovel).subscribe(res => {
+        this.toast.success("Imovel alterado com sucesso. ");
       }, ex => {
-        this.toast.error("Erro ao salvar o registro. ");
+        this.toast.error("Erro ao alterar o registro. ");
       } );
     }
 
+    unchange(){
+      return false;
+    }
 }

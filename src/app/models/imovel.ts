@@ -1,16 +1,14 @@
+import { TipoEndereco } from './tipoEndereco';
 import { Endereco } from "./endereco";
 import { Proprietario } from "./proprietario";
 
 export interface Imovel {
 
   id: any;
-  endereco: Endereco;
-  logradouro: String;
-  numero: String;
   nomProrpietario: String;
   matricula: String;
-  complemento: String;
-  condominio: Boolean;
+  complementoImovel: String;
+  condominio: String;
   tipo: String;
   edificacao: String;
   servico: String;
@@ -23,6 +21,12 @@ export interface Imovel {
   vagas: String;
   observacao: String;
   fotos: String[];
-  prorietario: Proprietario;
-
+  proprietario: Proprietario;
+  logradouro: String;
+  numero: String;
+  complementoEndereco: string;
+  bairro: string;
+  cep: string;
+  cidade: string;
+  estado: string;
 }

@@ -20,8 +20,16 @@ export class ImovelService {
   }
 
   save(imovel: Imovel): Observable<Imovel>{
-    console.log("imovel..: ",imovel);
+    console.log("Imovel para inclusao ", imovel)
     return this.htpp.post<Imovel>(`${API_CONFIG.baseUrl}/imovel`, imovel);
+  }
+
+  update(id: any, imovel: Imovel): Observable<Imovel> {
+    return this.htpp.patch<Imovel>(`${API_CONFIG.baseUrl}/imovel/${id}`, imovel)
+  }
+
+  delete(id: any): Observable<Imovel> {
+    return this.htpp.delete<Imovel>(`${API_CONFIG.baseUrl}/imovel/${id}`)
   }
 
 }
