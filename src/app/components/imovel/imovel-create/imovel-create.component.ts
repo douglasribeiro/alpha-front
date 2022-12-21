@@ -209,6 +209,7 @@ proprietario: Proprietario = {
     create(){
       this.service.save(this.imovel).subscribe(res => {
         this.toast.success("Imovel salvo com sucesso. ");
+        this.router.navigate(['imovel']);
       }, ex => {
         this.toast.error("Erro ao salvar o registro. ");
       } );

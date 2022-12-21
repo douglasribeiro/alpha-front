@@ -254,6 +254,41 @@
 
         </div>
       </mat-tab>
+      <mat-tab label="Fotos">
+
+        <!--button class="mat-elevation-z8 midWidth" mat-stroked-button color="primary">Nova Foto</!--button-->
+
+        <mat-card>
+          <mat-card-content>
+            <br>
+
+            <mat-form-field style="width: 100%;">
+              <mat-label>Arquivo</mat-label>
+              <button mat-icon-button matPrefix (click)="f_input.click()">
+                <mat-icon>attach_file</mat-icon>
+              </button>
+              <input type="text" readonly matInput [formControl]="display" />
+              <input type="file" class="midWidth"  multiple hidden #f_input (change)="handleFileInputChange(f_input.files)"/>
+              <button mat-stroked-button color="primary" class="midWidth" [disabled]="display.invalid" (click)="handleSubmit()">
+                Enviar
+              </button>
+              <mat-error>this field is required</mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card *ngIf="file_list.length" style="margin-top: 16px;">
+          <mat-list>
+            <div mat-subheader>Submit Files ({{ file_list.length }})</div>
+            <mat-list-item *ngFor="let file of file_list">
+              <mat-icon mat-list-icon>insert_drive_file</mat-icon>
+              <div mat-line>{{ file }}</div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
+
+
+      </mat-tab>
     </mat-tab-group>
     <button (click)="update()" class="midWidth mat-elevation-z4" mat-flat-button color="primary">Cadastrar</button>
     <button routerLink="/imovel" class="midWidth mat-elevation-z4" mat-stroked-button color="primary">Voltar</button>

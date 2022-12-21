@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, OnInit, VERSION } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -18,6 +18,11 @@ import { DropdownService } from 'src/app/shared/services/dropdown.service';
   styleUrls: ['./imovel-edit.component.css']
 })
 export class ImovelEditComponent implements OnInit {
+
+  name = "Angular " + VERSION.major;
+  display: FormControl = new FormControl("", Validators.required);
+  file_store: FileList;
+  file_list: Array<string> = [];
 
   novo: boolean = false;
   tpEdificacao: any[];
@@ -139,6 +144,7 @@ proprietario: Proprietario = {
 
     findById() :void{
       this.service.findbyId(this.imovel.id).subscribe(resposta => {
+        console.log(resposta);
         this.imovel = resposta;
       });                                           //  proprietarios
     }
@@ -200,6 +206,7 @@ proprietario: Proprietario = {
       console.log("Update ", this.imovel);
       this.service.update(this.imovel.id, this.imovel).subscribe(res => {
         this.toast.success("Imovel alterado com sucesso. ");
+        this.router.navigate(['imovel']);
       }, ex => {
         this.toast.error("Erro ao alterar o registro. ");
       } );
@@ -207,5 +214,29 @@ proprietario: Proprietario = {
 
     unchange(){
       return false;
+    }
+
+    handleFileInputChange(l: FileList): void {
+      console.log("handleFileInputChange")
+      this.file_store = l;
+      if (l.length) {
+        const f = l[0];
+        const count = l.length > 1 ? `(+${l.length - 1} files)` : "";
+        this.display.patchValue(`${f.name}${count}`);
+      } else {
+        this.display.patchValue("");
+      }
+    }
+
+    handleSubmit(): void {
+      var fd = new FormData();
+      console.log("handleSubmit ", fd)
+      this.file_list = [];
+      for (let i = 0; i < this.file_store.length; i++) {
+        fd.append("files", this.file_store[i], this.file_store[i].name);
+        this.file_list.push(this.file_store[i].name);
+      }
+
+      // do submit ajax
     }
 }
