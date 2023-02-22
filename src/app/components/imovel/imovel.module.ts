@@ -8,6 +8,8 @@ import { SharedModule } from "src/app/shared/shared.module";
 import { ImovelCreateComponent } from './imovel-create/imovel-create.component';
 import { ImovelEditComponent } from './imovel-edit/imovel-edit.component';
 import { ImovelDeleteComponent } from './imovel-delete/imovel-delete.component';
+import { NgxOwlCarouselOModule } from 'ngx-owl-carousel-o';
+
 
 @NgModule({
   declarations:[
@@ -22,6 +24,7 @@ import { ImovelDeleteComponent } from './imovel-delete/imovel-delete.component';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxOwlCarouselOModule,
     NgxMaskModule.forRoot()
   ]
 })

@@ -3,13 +3,17 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { API_CONFIG } from '../config/api.config';
-import { Credenciais } from '../models/credenciais';
+
+export interface Credenciais {
+  email: string;
+  senha: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  
+
   jwtService: JwtHelperService = new JwtHelperService();
 
   constructor(

@@ -1,295 +1,291 @@
 <div class="container mat-elevation-z8">
-    <h1>Editar Imóvel</h1>
-    <img class="fullWidth" src="assets/img/tecnico-create.svg" alt="">
-    <mat-tab-group dynamicHeight>
-      <mat-tab label="Imóvel">
-        <br>
-        <div *ngIf="formulario">
-          <form class="form">
+  <h1>Editar Imóvel</h1>
+  <img class="fullWidth" src="assets/img/tecnico-create.svg" alt="">
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Imóvel">
+      <br>
+      <div *ngIf="formulario">
+        <form class="form">
 
-            <div class="fullWidth">
-              <mat-form-field class="treeWidth" appearance="legacy">
-                <mat-label>Tipo de imóvel</mat-label>
-                <mat-select [(ngModel)]="imovel.tipo" name="tipoIm">
-                  <mat-option *ngFor="let tpIm of tpImovel" [value]="tpIm.value">
-                    {{tpIm.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+          <div class="fullWidth">
+            <mat-form-field class="treeWidth" appearance="legacy">
+              <mat-label>Tipo de imóvel</mat-label>
+              <mat-select [(ngModel)]="imovel.tipo" name="tipoIm">
+                <mat-option *ngFor="let tpIm of tpImovel" [value]="tpIm.value">
+                  {{tpIm.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
-              <mat-form-field class="treeWidth">
-                <mat-label>Tipo de Serviço</mat-label>
-                <mat-select [(ngModel)]="imovel.servico" name="tipoSe">
-                  <mat-option *ngFor="let tpSe of tpServico" [value]="tpSe.value">
-                    {{tpSe.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+            <mat-form-field class="treeWidth">
+              <mat-label>Tipo de Serviço</mat-label>
+              <mat-select [(ngModel)]="imovel.servico" name="tipoSe">
+                <mat-option *ngFor="let tpSe of tpServico" [value]="tpSe.value">
+                  {{tpSe.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
-              <mat-form-field class="treeWidth">
-                <mat-label>Tipo de Edificação</mat-label>
-                <mat-select [(ngModel)]="imovel.edificacao" name="tipoEd">
-                  <mat-option *ngFor="let tpEd of tpEdificacao" [value]="tpEd.value">
-                    {{tpEd.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
+            <mat-form-field class="treeWidth">
+              <mat-label>Tipo de Edificação</mat-label>
+              <mat-select [(ngModel)]="imovel.edificacao" name="tipoEd">
+                <mat-option *ngFor="let tpEd of tpEdificacao" [value]="tpEd.value">
+                  {{tpEd.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
 
-            <div class="fullWidth">
-              <mat-form-field class="treeWidth" appearance="legacy">
-                <mat-label>Matricula</mat-label>
-                <input [formControl]="matricula" [(ngModel)]="imovel.matricula" required matInput
-                  placeholder="Ex. 123.456X">
-              </mat-form-field>
+          <div class="fullWidth">
+            <mat-form-field class="treeWidth" appearance="legacy">
+              <mat-label>Matricula</mat-label>
+              <input [formControl]="matricula" [(ngModel)]="imovel.matricula" required matInput
+                placeholder="Ex. 123.456X">
+            </mat-form-field>
 
-              <mat-form-field class="treeWidth">
-                <mat-label>Condominio</mat-label>
-                <mat-select [(ngModel)]="imovel.condominio" name="tpCon">
-                  <mat-option *ngFor="let tpCond of simNao" [value]="tpCond.value">
-                    {{tpCond.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+            <mat-form-field class="treeWidth">
+              <mat-label>Condominio</mat-label>
+              <mat-select [(ngModel)]="imovel.condominio" name="tpCon">
+                <mat-option *ngFor="let tpCond of simNao" [value]="tpCond.value">
+                  {{tpCond.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
-              <mat-form-field class="treeWidth" appearance="legacy">
-                <mat-label>Complemento</mat-label>
-                <input [formControl]="complementoImovel" [(ngModel)]="imovel.complementoImovel" required matInput
-                  placeholder="Ex. obs. sobreo imóvel">
-              </mat-form-field>
-            </div>
+            <mat-form-field class="treeWidth" appearance="legacy">
+              <mat-label>Complemento</mat-label>
+              <input [formControl]="complementoImovel" [(ngModel)]="imovel.complementoImovel" required matInput
+                placeholder="Ex. obs. sobreo imóvel">
+            </mat-form-field>
+          </div>
 
-            <div class="fullWidth">
-              <mat-form-field class="treeWidth" appearance="legacy">
-                <mat-label>Area Total M²</mat-label>
-                <input [formControl]="areaTotal" [(ngModel)]="imovel.areaTotal" required matInput placeholder="Ex. 100">
-              </mat-form-field>
+          <div class="fullWidth">
+            <mat-form-field class="treeWidth" appearance="legacy">
+              <mat-label>Area Total M²</mat-label>
+              <input [formControl]="areaTotal" [(ngModel)]="imovel.areaTotal" required matInput placeholder="Ex. 100">
+            </mat-form-field>
 
-              <mat-form-field class="treeWidth" appearance="legacy">
-                <mat-label>Area Construida M²</mat-label>
-                <input [formControl]="areaConstruida" [(ngModel)]="imovel.areaConstruida" required matInput
-                  placeholder="Ex. 100">
-              </mat-form-field>
+            <mat-form-field class="treeWidth" appearance="legacy">
+              <mat-label>Area Construida M²</mat-label>
+              <input [formControl]="areaConstruida" [(ngModel)]="imovel.areaConstruida" required matInput
+                placeholder="Ex. 100">
+            </mat-form-field>
 
-              <mat-form-field class="treeWidth" appearance="legacy">
-                <mat-label>Comodos</mat-label>
-                <input [formControl]="comodos" [(ngModel)]="imovel.comodos" required matInput placeholder="Ex. 5">
-              </mat-form-field>
-            </div>
+            <mat-form-field class="treeWidth" appearance="legacy">
+              <mat-label>Comodos</mat-label>
+              <input [formControl]="comodos" [(ngModel)]="imovel.comodos" required matInput placeholder="Ex. 5">
+            </mat-form-field>
+          </div>
 
-            <div class="fullWidth">
-              <mat-form-field appearance="legacy" class="fourWidth">
-                <mat-label>Banheiros</mat-label>
-                <input [formControl]="banheiros" [(ngModel)]="imovel.banheiros" required matInput placeholder="Ex. 1">
-              </mat-form-field>
+          <div class="fullWidth">
+            <mat-form-field appearance="legacy" class="fourWidth">
+              <mat-label>Banheiros</mat-label>
+              <input [formControl]="banheiros" [(ngModel)]="imovel.banheiros" required matInput placeholder="Ex. 1">
+            </mat-form-field>
 
-              <mat-form-field appearance="legacy" class="fourWidth">
-                <mat-label>Quartos</mat-label>
-                <input [formControl]="quartos" [(ngModel)]="imovel.quartos" required matInput placeholder="Ex. 2">
-              </mat-form-field>
+            <mat-form-field appearance="legacy" class="fourWidth">
+              <mat-label>Quartos</mat-label>
+              <input [formControl]="quartos" [(ngModel)]="imovel.quartos" required matInput placeholder="Ex. 2">
+            </mat-form-field>
 
-              <mat-form-field appearance="legacy" class="fourWidth">
-                <mat-label>Suites</mat-label>
-                <input [formControl]="suites" [(ngModel)]="imovel.suites" required matInput placeholder="Ex. 1">
-              </mat-form-field>
+            <mat-form-field appearance="legacy" class="fourWidth">
+              <mat-label>Suites</mat-label>
+              <input [formControl]="suites" [(ngModel)]="imovel.suites" required matInput placeholder="Ex. 1">
+            </mat-form-field>
 
-              <mat-form-field appearance="legacy" class="fourWidth">
-                <mat-label>Vagas Garagem</mat-label>
-                <input [formControl]="vagas" [(ngModel)]="imovel.vagas" required matInput placeholder="Ex. 1">
-              </mat-form-field>
-            </div>
+            <mat-form-field appearance="legacy" class="fourWidth">
+              <mat-label>Vagas Garagem</mat-label>
+              <input [formControl]="vagas" [(ngModel)]="imovel.vagas" required matInput placeholder="Ex. 1">
+            </mat-form-field>
+          </div>
 
-            <div class="fullWidth">
-              <mat-form-field appearance="legacy" class="fullWidth">
-                <mat-label>Obervações</mat-label>
-                <input [formControl]="observacao" [(ngModel)]="imovel.observacao" matInput placeholder="Ex. 1">
-              </mat-form-field>
-            </div>
+          <div class="fullWidth">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>Obervações</mat-label>
+              <input [formControl]="observacao" [(ngModel)]="imovel.observacao" matInput placeholder="Ex. 1">
+            </mat-form-field>
+          </div>
 
-          </form>
-        </div>
-      </mat-tab>
-      <mat-tab label="Endereço">
+        </form>
+      </div>
+    </mat-tab>
+    <mat-tab label="Endereço">
 
-          <div class="example-small-box">
+      <div class="example-small-box">
 
-            <form class="form">
-              <br>
-              <div class="fullWidth">
+        <form class="form">
+          <br>
+          <div class="fullWidth">
 
-                  <mat-form-field class="midWidth" appearance="legacy">
-                      <mat-label>CEP</mat-label>
-                      <input [(ngModel)]="imovel.cep" name="cep" [formControl]="cep" required matInput
-                      placeholder="Ex. 00.000-000" mask="00.000-000">
-                      <mat-icon matSuffix (click)="verCep()">search</mat-icon>
-                  </mat-form-field>
-
-              </div>
-
-              <div class="fullwidth">
-                <mat-form-field class="midWidth" appearance="legacy">
-                    <mat-label>Logradouro</mat-label>
-                    <input [(ngModel)]="imovel.logradouro" [formControl]="logradouro" readonly="true" matInput
-                        placeholder="Ex. Logradouro">
-                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                </mat-form-field>
-
-                <mat-form-field class="fiveWidth"  appearance="legacy">
-                    <mat-label>Numero</mat-label>
-                    <input [(ngModel)]="imovel.numero" [formControl]="numero" matInput
-                        placeholder="Ex. Numero">
-                </mat-form-field>
-
-                <mat-form-field class="treeWidth" appearance="legacy">
-                  <mat-label>Bairro</mat-label>
-                  <input [(ngModel)]="imovel.bairro" [formControl]="bairro" readonly="true" matInput
-                      placeholder="Ex. Bairro">
-                </mat-form-field>
-              </div>
-
-              <div class="fullWidth">
-
-                <mat-form-field class="midWidth" appearance="legacy">
-                    <mat-label>Complemento</mat-label>
-                    <input [(ngModel)]="imovel.complementoEndereco" [formControl]="complementoEndereco" matInput
-                        placeholder="Ex. Complemento">
-                </mat-form-field>
-
-                <mat-form-field class="treeWidth" appearance="legacy">
-                    <mat-label>Cidade</mat-label>
-                    <input [(ngModel)]="imovel.cidade" [formControl]="cidade" readonly="true" matInput
-                    placeholder="Ex. Cidade">
-                </mat-form-field>
-
-                <mat-form-field class="fiveWidth" appearance="legacy">
-                    <mat-label>Estado</mat-label>
-                    <input [(ngModel)]="imovel.estado" [formControl]="estado" readonly="true" matInput
-                    placeholder="Ex. Estado">
-                </mat-form-field>
-              </div>
-
-          </form>
+            <mat-form-field class="midWidth" appearance="legacy">
+              <mat-label>CEP</mat-label>
+              <input [(ngModel)]="imovel.cep" name="cep" [formControl]="cep" required matInput
+                placeholder="Ex. 00.000-000" mask="00.000-000">
+              <mat-icon matSuffix (click)="verCep()">search</mat-icon>
+            </mat-form-field>
 
           </div>
 
-      </mat-tab>
-      <mat-tab label="Proprietario">
-        <div class="example-small-box">
-
-          <form class="form">
-            <br>
-              <div class="fullWidth">
-
-                <mat-form-field class="midWidth" appearance="legacy">
-                  <mat-label>Id</mat-label>
-                  <input [(ngModel)]="imovel.proprietario.id" [formControl]="id" matInput
-                      placeholder="Codigo do proprietario">
-                      <mat-icon matSuffix (click)="pesquisaProprietario()">search</mat-icon>
-                </mat-form-field>
-
-                <mat-radio-group aria-labelledby="group-radio" class="midWidth" [(ngModel)]="imovel.proprietario.pessoa" [formControl]="pessoa">
-                  <mat-radio-button *ngFor="let op of pessoasOp" [value]="op.valor" color="primary" (click)="unchange()">{{op.descr}}</mat-radio-button>
-                </mat-radio-group>
-              </div>
-
-              <mat-form-field class="midWidth" appearance="legacy">
-                <mat-label>Nome</mat-label>
-                <input [(ngModel)]="imovel.proprietario.nome" [formControl]="nome" readonly="true" matInput
-                    placeholder="Ex. Usuario da Silva">
-                <mat-icon matSuffix (click)="pesquisaProp()">search</mat-icon>
+          <div class="fullwidth">
+            <mat-form-field class="midWidth" appearance="legacy">
+              <mat-label>Logradouro</mat-label>
+              <input [(ngModel)]="imovel.logradouro" [formControl]="logradouro" readonly="true" matInput
+                placeholder="Ex. Logradouro">
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
             </mat-form-field>
+
+            <mat-form-field class="fiveWidth" appearance="legacy">
+              <mat-label>Numero</mat-label>
+              <input [(ngModel)]="imovel.numero" [formControl]="numero" matInput placeholder="Ex. Numero">
+            </mat-form-field>
+
+            <mat-form-field class="treeWidth" appearance="legacy">
+              <mat-label>Bairro</mat-label>
+              <input [(ngModel)]="imovel.bairro" [formControl]="bairro" readonly="true" matInput
+                placeholder="Ex. Bairro">
+            </mat-form-field>
+          </div>
+
+          <div class="fullWidth">
 
             <mat-form-field class="midWidth" appearance="legacy">
-              <mat-label>E-mail</mat-label>
-              <input [formControl]="email" [(ngModel)]="imovel.proprietario.email" readonly="true" matInput
-                  placeholder="Ex. usuario@mail.com">
-                  <mat-icon matSuffix (click)="pesquisaProp()">search</mat-icon>
+              <mat-label>Complemento</mat-label>
+              <input [(ngModel)]="imovel.complementoEndereco" [formControl]="complementoEndereco" matInput
+                placeholder="Ex. Complemento">
             </mat-form-field>
+
+            <mat-form-field class="treeWidth" appearance="legacy">
+              <mat-label>Cidade</mat-label>
+              <input [(ngModel)]="imovel.cidade" [formControl]="cidade" readonly="true" matInput
+                placeholder="Ex. Cidade">
+            </mat-form-field>
+
+            <mat-form-field class="fiveWidth" appearance="legacy">
+              <mat-label>Estado</mat-label>
+              <input [(ngModel)]="imovel.estado" [formControl]="estado" readonly="true" matInput
+                placeholder="Ex. Estado">
+            </mat-form-field>
+          </div>
+
+        </form>
+
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Proprietario">
+      <div class="example-small-box">
+
+        <form class="form">
+          <br>
+          <div class="fullWidth">
 
             <mat-form-field class="midWidth" appearance="legacy">
-              <mat-label>R.G./Inscrição</mat-label>
-              <input [(ngModel)]="imovel.proprietario.identinscr" [formControl]="identinscr" readonly="true" matInput
-                  placeholder="Ex. 123.456.789-10">
+              <mat-label>Id</mat-label>
+              <input [(ngModel)]="imovel.proprietario.id" [formControl]="id" matInput
+                placeholder="Codigo do proprietario">
+              <mat-icon matSuffix (click)="pesquisaProprietario()">search</mat-icon>
             </mat-form-field>
 
-            <mat-form-field class="midWidth" appearance="legacy">
-              <mat-label>CPF/CNPJ</mat-label>
-              <input [(ngModel)]="imovel.proprietario.cpfcnpj" [formControl]="cpfcnpj" readonly="true" matInput
-                  placeholder="Ex. 123.456.789-10" mask="000.000.000-00">
+            <mat-radio-group aria-labelledby="group-radio" class="midWidth" [(ngModel)]="imovel.proprietario.pessoa"
+              [formControl]="pessoa">
+              <mat-radio-button *ngFor="let op of pessoasOp" [value]="op.valor" color="primary"
+                (click)="unchange()">{{op.descr}}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <mat-form-field class="midWidth" appearance="legacy">
+            <mat-label>Nome</mat-label>
+            <input [(ngModel)]="imovel.proprietario.nome" [formControl]="nome" readonly="true" matInput
+              placeholder="Ex. Usuario da Silva">
+            <mat-icon matSuffix (click)="pesquisaProp()">search</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="midWidth" appearance="legacy">
+            <mat-label>E-mail</mat-label>
+            <input [formControl]="email" [(ngModel)]="imovel.proprietario.email" readonly="true" matInput
+              placeholder="Ex. usuario@mail.com">
+            <mat-icon matSuffix (click)="pesquisaProp()">search</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="midWidth" appearance="legacy">
+            <mat-label>R.G./Inscrição</mat-label>
+            <input [(ngModel)]="imovel.proprietario.identinscr" [formControl]="identinscr" readonly="true" matInput
+              placeholder="Ex. 123.456.789-10">
+          </mat-form-field>
+
+          <mat-form-field class="midWidth" appearance="legacy">
+            <mat-label>CPF/CNPJ</mat-label>
+            <input [(ngModel)]="imovel.proprietario.cpfcnpj" [formControl]="cpfcnpj" readonly="true" matInput
+              placeholder="Ex. 123.456.789-10" mask="000.000.000-00">
+          </mat-form-field>
+
+          <mat-form-field class="midWidth" appearance="legacy">
+            <mat-label>Data Nascimento</mat-label>
+            <input matInput (dateInput)="busca($event)" [(ngModel)]="imovel.proprietario.dtNiver"
+              [formControl]="dtNiver" readonly="true">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="midWidth" appearance="legacy">
+            <mat-label>Estado Civil</mat-label>
+            <input [(ngModel)]="imovel.proprietario.estCivil" [formControl]="estCivil" readonly="true" matInput>
+          </mat-form-field>
+
+          <div class="fullWidth">
+            <mat-form-field class="treeWidth" appearance="legacy">
+              <mat-label>Naturalidade</mat-label>
+              <input [formControl]="naturalidade" [(ngModel)]="imovel.proprietario.naturalidade" readonly="true"
+                matInput placeholder="Ex. São Paulo">
             </mat-form-field>
 
-            <mat-form-field class="midWidth" appearance="legacy">
-              <mat-label>Data Nascimento</mat-label>
-              <input matInput (dateInput)="busca($event)" [(ngModel)]="imovel.proprietario.dtNiver" [formControl]="dtNiver" readonly="true">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+            <mat-form-field class="treeWidth" appearance="legacy">
+              <mat-label>Nacionalidade</mat-label>
+              <input [formControl]="nacional" [(ngModel)]="imovel.proprietario.nacional" readonly="true" matInput
+                placeholder="Ex. São Paulo">
             </mat-form-field>
 
-            <mat-form-field class="midWidth" appearance="legacy">
-              <mat-label>Estado Civil</mat-label>
-              <input [(ngModel)]="imovel.proprietario.estCivil" [formControl]="estCivil" readonly="true" matInput>
+            <mat-form-field class="treeWidth" appearance="legacy">
+              <mat-label>Sexo</mat-label>
+              <input [formControl]="sexo" [(ngModel)]="imovel.proprietario.sexo" readonly="true" matInput
+                placeholder="Ex. Masculino">
             </mat-form-field>
+          </div>
 
-            <div class="fullWidth">
-              <mat-form-field class="treeWidth" appearance="legacy">
-                  <mat-label>Naturalidade</mat-label>
-                  <input [formControl]="naturalidade" [(ngModel)]="imovel.proprietario.naturalidade"
-                  readonly="true" matInput placeholder="Ex. São Paulo">
-              </mat-form-field>
+        </form>
 
-              <mat-form-field class="treeWidth" appearance="legacy">
-                  <mat-label>Nacionalidade</mat-label>
-                  <input [formControl]="nacional" [(ngModel)]="imovel.proprietario.nacional" readonly="true" matInput
-                      placeholder="Ex. São Paulo">
-              </mat-form-field>
+      </div>
+    </mat-tab>
+    <mat-tab label="Fotos">
 
-              <mat-form-field class="treeWidth" appearance="legacy">
-                  <mat-label>Sexo</mat-label>
-                  <input [formControl]="sexo" [(ngModel)]="imovel.proprietario.sexo" readonly="true" matInput
-                      placeholder="Ex. Masculino">
-              </mat-form-field>
-            </div>
+      <br>
 
-          </form>
+      <mat-form-field style="width: 100%;">
+        <mat-label>Arquivo</mat-label>
+        <button mat-icon-button matPrefix (click)="f_input.click()">
+          <mat-icon>attach_file</mat-icon>
+        </button>
+        <input type="text" readonly matInput [formControl]="display" />
+        <input type="file" class="midWidth" multiple hidden #f_input (change)="handleFileInputChange(f_input.files)" />
+        <mat-error>Arquivos obrigatorios</mat-error>
+      </mat-form-field>
 
-        </div>
-      </mat-tab>
-      <mat-tab label="Fotos">
-
-        <!--button class="mat-elevation-z8 midWidth" mat-stroked-button color="primary">Nova Foto</!--button-->
-
-        <mat-card>
-          <mat-card-content>
-            <br>
-
-            <mat-form-field style="width: 100%;">
-              <mat-label>Arquivo</mat-label>
-              <button mat-icon-button matPrefix (click)="f_input.click()">
-                <mat-icon>attach_file</mat-icon>
-              </button>
-              <input type="text" readonly matInput [formControl]="display" />
-              <input type="file" class="midWidth"  multiple hidden #f_input (change)="handleFileInputChange(f_input.files)"/>
-              <button mat-stroked-button color="primary" class="midWidth" [disabled]="display.invalid" (click)="handleSubmit()">
-                Enviar
-              </button>
-              <mat-error>this field is required</mat-error>
-            </mat-form-field>
-          </mat-card-content>
-        </mat-card>
-
-        <mat-card *ngIf="file_list.length" style="margin-top: 16px;">
-          <mat-list>
-            <div mat-subheader>Submit Files ({{ file_list.length }})</div>
-            <mat-list-item *ngFor="let file of file_list">
-              <mat-icon mat-list-icon>insert_drive_file</mat-icon>
-              <div mat-line>{{ file }}</div>
-            </mat-list-item>
-          </mat-list>
-        </mat-card>
+      <mat-card *ngIf="file_list.length">
+        <mat-list>
+          <div mat-subheader>Arquivos Selecionados: ({{ file_list.length }})</div>
+          <mat-list-item *ngFor="let file of file_list">
+            <mat-icon mat-list-icon>insert_drive_file</mat-icon>
+            <div mat-line>{{ file }}</div>
+          </mat-list-item>
+        </mat-list>
+        <button mat-stroked-button color="primary" class="midWidth" [disabled]="display.invalid" (click)="uploadFiles()">
+          Enviar
+        </button>
+      </mat-card>
 
 
-      </mat-tab>
-    </mat-tab-group>
-    <button (click)="update()" class="midWidth mat-elevation-z4" mat-flat-button color="primary">Cadastrar</button>
-    <button routerLink="/imovel" class="midWidth mat-elevation-z4" mat-stroked-button color="primary">Voltar</button>
-  </div>
+    </mat-tab>
+  </mat-tab-group>
+  <button (click)="update()" class="midWidth mat-elevation-z4" mat-flat-button color="primary">Cadastrar</button>
+  <button routerLink="/imovel" class="midWidth mat-elevation-z4" mat-stroked-button color="primary">Voltar</button>
+</div>

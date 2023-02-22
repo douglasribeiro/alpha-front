@@ -223,6 +223,7 @@ proprietario: Proprietario = {
         const f = l[0];
         const count = l.length > 1 ? `(+${l.length - 1} files)` : "";
         this.display.patchValue(`${f.name}${count}`);
+        this.handleSubmit();
       } else {
         this.display.patchValue("");
       }
@@ -237,6 +238,10 @@ proprietario: Proprietario = {
         this.file_list.push(this.file_store[i].name);
       }
 
-      // do submit ajax
+    }
+
+    uploadFiles(){
+      this.service.upload(this.file_list).subscribe(res => this.toast.success(res));
+      console.log(this.file_list)
     }
 }

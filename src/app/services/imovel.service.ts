@@ -32,4 +32,9 @@ export class ImovelService {
     return this.htpp.delete<Imovel>(`${API_CONFIG.baseUrl}/imovel/${id}`)
   }
 
+  upload(fileList: any): Observable<any>{
+    //file_list: Array<string> = [];
+    return this.htpp.post(`${API_CONFIG.baseUrl}/imovel/uploads`, fileList);
+  }
+
 }
